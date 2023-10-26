@@ -62,10 +62,11 @@ fun MyBeautifulCityApp(
         WindowWidthSizeClass.Expanded -> PlacesContentType.LIST_AND_DETAIL
         else -> PlacesContentType.LIST_ONLY
     }
+
     Scaffold(
         topBar = {
         AppBar(
-            onBackButtonClick = { viewModel.navigateToListPage() },
+            onBackButtonClick = {viewModel.navigateToListPage()},
             isShowingListPage = uiState.isShowingListPage,
             selectedPlace = uiState.currentPlace,
             windowSize = windowSize
@@ -75,7 +76,7 @@ fun MyBeautifulCityApp(
             if (contentType == PlacesContentType.LIST_AND_DETAIL) {
                 PlaceListAndDetail(
                     places = uiState.placesList,
-                    onClick = { viewModel.updateCurrentPlace(it) },
+                    onClick = {viewModel.updateCurrentPlace(it)},
                     selectedPlace = uiState.currentPlace,
                     contentPadding = innerPadding,
                     onBackPressed = onBackPressed,
@@ -98,7 +99,7 @@ fun MyBeautifulCityApp(
                 } else {
                     PlaceDetail(
                         selectedPlace = uiState.currentPlace,
-                        onBackPressed = { viewModel.navigateToListPage() },
+                        onBackPressed = {viewModel.navigateToListPage()},
                         contentPadding = innerPadding,
                         modifier = modifier.fillMaxWidth()
                     )
@@ -124,26 +125,23 @@ fun AppBar(
             Text(
                 text = if (isShowingDetailPage) {
                     selectedPlace.placeCategory.toString()
-                    } else {
-                        stringResource(R.string.app_bar)},
+                    } else {stringResource(R.string.app_bar)},
                 style = MaterialTheme.typography.headlineLarge,
                 color = MaterialTheme.colorScheme.primary
                 )
-            },
-            navigationIcon = if (isShowingDetailPage) {
-                {
-                    IconButton(onClick = onBackButtonClick) {
-                        Icon(
-                            imageVector = Icons.Filled.ArrowBack,
-                            contentDescription = stringResource(R.string.back_button),
-                        )
-                    }
-                }
-            } else {
-                { Box {} }
-            },
-            modifier = modifier
-        )
+                },
+        navigationIcon = if (isShowingDetailPage) {
+        {
+            IconButton(onClick = onBackButtonClick) {
+                Icon(
+                    imageVector = Icons.Filled.ArrowBack,
+                    contentDescription = stringResource(R.string.back_button),
+                    )
+            }
+        }} else {
+            { Box {} }},
+        modifier = modifier
+    )
 }
 
 
@@ -161,15 +159,17 @@ fun PlaceListItem(
             .fillMaxWidth()
             .width(400.dp)
             .height(120.dp),
-        onClick = { onClick(place) }
+        onClick = {onClick(place)}
     ) {
-        Row (modifier = modifier.fillMaxWidth()) {
+        Row (
+            modifier = modifier.fillMaxWidth()
+        ) {
             Column (
                 horizontalAlignment = Alignment.Start,
                 modifier = modifier
                     .weight(2f)
                     .padding(10.dp)
-            ){
+            ) {
                 Text(
                     text = stringResource(place.nameResource),
                     style = MaterialTheme.typography.labelLarge,
@@ -187,7 +187,6 @@ fun PlaceListItem(
                 place = place,
                 contentScale = ContentScale.Crop,
                 modifier = modifier
-                    //.height(120.dp)
                     .weight(1f)
             )
         }
@@ -206,7 +205,7 @@ fun PlaceImageListItem(
             contentDescription = stringResource(place.nameResource),
             alignment = Alignment.Center,
             contentScale = contentScale
-            )
+        )
     }
 }
 
@@ -238,11 +237,11 @@ fun PlaceDetail(
     onBackPressed: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    BackHandler {
-        onBackPressed()
-    }
+    BackHandler {onBackPressed()}
+
     val scrollState = rememberScrollState()
     val layoutDirection = LocalLayoutDirection.current
+
     Box(
         modifier = modifier
             .padding(top = contentPadding.calculateTopPadding())
@@ -261,8 +260,7 @@ fun PlaceDetail(
                     painter = painterResource(selectedPlace.placeImageResource),
                     contentDescription = stringResource(selectedPlace.nameResource),
                     contentScale = ContentScale.FillWidth,
-                    modifier = Modifier
-                        .height(380.dp)
+                    modifier = Modifier.height(380.dp)
                 )
                 Text(
                     text = stringResource(selectedPlace.nameResource),
@@ -298,13 +296,13 @@ fun PlaceListAndDetail(
     modifier: Modifier = Modifier
 ){
     Row (
-        modifier = modifier
-            .fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
     ) {
         Box (modifier = modifier
             .padding(top = 48.dp, start = 8.dp, end = 8.dp)
             .fillMaxWidth()
-            .weight(2f)){
+            .weight(2f)
+        ){
             PlaceList(
                 places = places,
                 onClick = onClick,
@@ -315,8 +313,7 @@ fun PlaceListAndDetail(
             selectedPlace = selectedPlace,
             contentPadding = contentPadding,
             onBackPressed = onBackPressed,
-            modifier = Modifier
-                .weight(3f)
+            modifier = Modifier.weight(3f)
         )
     }
 }
@@ -329,7 +326,8 @@ fun ListAndDetailPreview() {
             places = PlacesDataSource.loadPlaces(),
             onClick = {},
             selectedPlace = PlacesDataSource.defaultPlace,
-            onBackPressed = { /*TODO*/ })
+            onBackPressed = {}
+        )
     }
 }
 

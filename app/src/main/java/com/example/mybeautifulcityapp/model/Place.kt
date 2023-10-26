@@ -9,10 +9,10 @@ data class Place (
     @StringRes val descriptionResource: Int,
     @StringRes val localizationResource: Int,
     @DrawableRes val placeImageResource: Int,
-    val placeCategory: placeCategory
+    val placeCategory: PlaceCategory
 )
 
-enum class placeCategory {
+enum class PlaceCategory {
     History, Entertainment, Art, Shops, Food, Nature
 }
 

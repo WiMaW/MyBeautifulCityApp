@@ -52,9 +52,6 @@ class MainActivity : ComponentActivity() {
                         windowSize = windowSize,
                         onBackPressed = {finish()}
                     )
-//                    MyBeautifulCityApp(
-//                        onBackPressed = {finish()},
-//                        windowSize = windowSize.widthSizeClass)
                 }
             }
         }
@@ -85,9 +82,7 @@ fun Navigation(
 //@Preview(showBackground = true)
 @Composable
 fun SplashScreen(navController: NavController) {
-    val scale = remember {
-        Animatable(0f)
-    }
+    val scale = remember {Animatable(0f)}
 
     LaunchedEffect(key1 = true) {
         scale.animateTo(
@@ -114,10 +109,10 @@ fun SplashScreen(navController: NavController) {
             style = MaterialTheme.typography.displayLarge,
             color = MaterialTheme.colorScheme.primary,
             textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(
+            modifier = Modifier.padding(
                     horizontal = 20.dp,
-                    vertical = 8.dp)
+                    vertical = 8.dp
+            )
         )
         Image(
             painter = painterResource(R.drawable.city_hall),
@@ -134,7 +129,8 @@ fun SplashScreen(navController: NavController) {
             modifier = Modifier
                 .padding(
                 horizontal = 20.dp,
-                vertical = 8.dp)
+                vertical = 8.dp
+                )
                 .scale(scale.value)
         )
         Text(
@@ -143,8 +139,7 @@ fun SplashScreen(navController: NavController) {
             color = MaterialTheme.colorScheme.primary,
             textAlign = TextAlign.Center,
             modifier = Modifier
-                .padding(
-                    horizontal = 20.dp)
+                .padding(horizontal = 20.dp)
                 .scale(scale.value)
         )
     }
