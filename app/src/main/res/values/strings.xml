@@ -11,6 +11,10 @@
     <string name="city_hall_description">The Cracow Gate which is the part of City Hall was built in 14th century. In XV or XVI century the gate was expanded by one storey. In 1842 the city hall connected to the gate was built and since then it has been the seat of the city authorities.</string>
     <string name="city_hall_localization">plac Kazimierza Wielkiego 1</string>
 
+    <string name="city_square">City Square</string>
+    <string name="city_square_description"></string>
+    <string name="city_square_localization">plac Legionów 1</string>
+
     <string name="former_castle">Former Castle</string>
     <string name="former_castle_description">In this place during the times of Kazimierz Wielki (king of Poland) there was a wooden stronghold. It was destroyed during fire in 1791. In 1843 there were built a new neoclassical palace on the lower parts of the castle walls. Today it is the seat of the Wieluń district authorities.</string>
     <string name="former_castle_localization">plac Kazimierza Wielkiego 2</string>
@@ -27,6 +31,10 @@
     <string name="defensive_walls_description">The Wieluń fortifications were built after the city fire in 1335, gradually replacing the older wooden and earth fortifications. Wieluń\'s defensive walls were approximately 1,200-1,300 meters long and covered an area of approximately 12 ha. The two main streets of the city converged there, forming a spindle with a market square in the middle. The walls were additionally surrounded by a moat.</string>
     <string name="defensive_walls_localization">ul. Podwale</string>
 
+    <string name="city_park">City Park named Zwirki i Wigury</string>
+    <string name="city_park_description"></string>
+    <string name="city_park_localization">plac Kazimierza Wielkiego 2</string>
+
     <string name="museum">Museum</string>
     <string name="museum_description">The museum is located in the former convent of the Bernardine nuns. Has various archaeological, historical and ethnographic collections.</string>
     <string name="museum_localization">ul. Narutowicza 13</string>
@@ -34,6 +42,14 @@
     <string name="kaliska_street">Kaliska Street</string>
     <string name="kaliska_street_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="kaliska_street_localization">ul. Kaliska</string>
+
+    <string name="kaliska_gate">Kaliska Gate</string>
+    <string name="kaliska_gate_description"></string>
+    <string name="kaliska_gate_localization">Nowy Rynek 6</string>
+
+    <string name="library">Library</string>
+    <string name="library_description"></string>
+    <string name="library_localization">ul. Narutowicza 4</string>
 
     <string name="cinema">Cinema/Theater Syrena</string>
     <string name="cinema_description">The cinema was built in 1959-1962. There was a space for 578 people. In the 90’s the cinema stopped operating. A general renovation was carried out in 2010, and in October 2017, the cinema reopened.</string>
