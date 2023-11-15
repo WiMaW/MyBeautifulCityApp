@@ -8,59 +8,87 @@
     <string name="back_button">Back button</string>
 
     <string name="city_hall">City Hall</string>
+    <string name="city_hall_pl">Ratusz</string>
     <string name="city_hall_description">The Cracow Gate which is the part of City Hall was built in 14th century. In XV or XVI century the gate was expanded by one storey. In 1842 the city hall connected to the gate was built and since then it has been the seat of the city authorities.</string>
+    <string name="city_hall_description_pl">Brama Krakowska będąca częścią Ratusza została zbudowana w XIV wieku. W XV lub XVI wieku bramę powiększono o jedną kondygnację. W 1842 roku wybudowano połączony z bramą ratusz i od tego czasu jest on siedzibą władz miejskich.</string>
     <string name="city_hall_localization">plac Kazimierza Wielkiego 1</string>
 
     <string name="city_square">City Square</string>
-    <string name="city_square_description"></string>
+    <string name="city_square_pl">Rynek Główny</string>
+    <string name="city_square_description">Its current buildings date back to the end of the 19th century. I the central place of the square the fountain is placed. There are numerous local shops and a restaurant at the market square.</string>
+    <string name="city_square_description_pl">Centralny plac w kształcie prostokąta. Obecna jego zabudowa pochodzi z końca XIX wieku. W centralnym miejscu rynku znajduje się fontanna. Przy rynku znajdują się liczne lokalne sklepy oraz restauracja. </string>
     <string name="city_square_localization">plac Legionów 1</string>
 
     <string name="former_castle">Former Castle</string>
+    <string name="former_castle_pl">Budynek byłego zamku</string>
     <string name="former_castle_description">In this place during the times of Kazimierz Wielki (king of Poland) there was a wooden stronghold. It was destroyed during fire in 1791. In 1843 there were built a new neoclassical palace on the lower parts of the castle walls. Today it is the seat of the Wieluń district authorities.</string>
+    <string name="former_castle_description_pl">Drewniany zamek zlokalizowany był w tym miejscu za czasów panowania króla Kazimierza Wielkiego. Został on zniszczony podczas pożaru w roku 1791. W 1843 roku w dolnych partiach murów zamkowych wzniesiono nowy, neoklasycystyczny pałac. Dziś jest mieści się tu siedziba wieluńskiego Starostwa Powiatowego.</string>
     <string name="former_castle_localization">plac Kazimierza Wielkiego 2</string>
 
     <string name="eternal_love_statue">Eternal Love Statue</string>
+    <string name="eternal_love_statue_pl">Pomnik Wieczna Miłość</string>
     <string name="eternal_love_statue_description">On August 31, 2013, the monument "Eternal Love" by Wojciech Siudmak was unveiled. The work shows two faces: a woman and a man like two planets suspended in space, which connect in their orbits to form the infinity sign. The monument was unveiled on the eve of the 74th anniversary of the outbreak of World War II.</string>
+    <string name="eternal_love_statue_description_pl">31 sierpnia 2013 roku odsłonięto pomnik „Wieczna Miłość” autorstwa Wojciecha Siudmaka. Praca ukazuje dwie twarze: kobietę i mężczyznę niczym dwie zawieszone w przestrzeni planety, które łączą się na swoich orbitach, tworząc znak nieskończoności. Pomnik odsłonięto w przeddzień 74. rocznicy wybuchu II wojny światowej.</string>
     <string name="eternal_love_statue_localization">Park Miejski im. Żwirki i Wigury</string>
 
     <string name="saint_michael_church">Saint Michael the Archangel Church</string>
+    <string name="saint_michael_church_pl">Kościół pod wezwaniem św. Michała Archanioła</string>
     <string name="saint_michael_church_description">Church dedicated to Saint Michael the Archangel. One of the first Wielun templates, build around 13-14th centuries. It was destroyed during Word War II in the spring of 1940.</string>
+    <string name="saint_michael_church_description_pl">Kościół pod wezwaniem Świętego Michała Archanioła. Jedna z pierwszych świątyń wieluńskich, zbudowana około XIII-XIV w. Została zniszczona podczas II wojny światowej wiosną 1940 roku.</string>
     <string name="saint_michael_church_localization">ul. Królewska 1</string>
 
     <string name="defensive_walls">Defensive Walls</string>
+    <string name="defensive_walls_pl">Mury obronne</string>
     <string name="defensive_walls_description">The Wieluń fortifications were built after the city fire in 1335, gradually replacing the older wooden and earth fortifications. Wieluń\'s defensive walls were approximately 1,200-1,300 meters long and covered an area of approximately 12 ha. The two main streets of the city converged there, forming a spindle with a market square in the middle. The walls were additionally surrounded by a moat.</string>
+    <string name="defensive_walls_description_pl">Wieluńskie mury obronne powstały po pożarze miasta w 1335 roku, zastępując stopniowo starsze obwarowania drewniano-ziemne. Mury obronne Wielunia miały długość około 1200-1300 metrów i zajmowały obszar około 12 ha. Zbiegały się tam dwie główne ulice miasta, tworząc wrzeciono z rynkiem pośrodku. Mury otaczała dodatkowo fosa.</string>
     <string name="defensive_walls_localization">ul. Podwale</string>
 
     <string name="city_park">City Park named Zwirki i Wigury</string>
-    <string name="city_park_description"></string>
+    <string name="city_park_pl">Park Miejski im. Żwirki i Wigury</string>
+    <string name="city_park_description">A downtown park, the arrangement of which was completed in 1895. It was given its current name in 1933. During the years of German occupation, after the outbreak of World War II, only Germans were allowed to enter it. There are many impressive trees in the park (including maples, beeches, oaks, chestnut trees, ash trees, linden trees, birches).</string>
+    <string name="city_park_description_pl">Park śródmiejski, którego urządzanie zakończono w roku 1895. Obecną nazwę nadano mu dopiero w roku 1933. W latach okupacji Niemieckiej, po wybuchu drugiej wojny światowej, wstp do niego mieli wyłącznie Niemcy. Na terenie parku rośnie wiele okazałych drzew (między innymi klony, buki, dęby, kasztanowce, jesiony, lipy, brzozy).</string>
     <string name="city_park_localization">plac Kazimierza Wielkiego 2</string>
 
     <string name="museum">Museum</string>
+    <string name="museum_pl">Muzeum</string>
     <string name="museum_description">The museum is located in the former convent of the Bernardine nuns. Has various archaeological, historical and ethnographic collections.</string>
+    <string name="museum_description_pl">Muzeum mieści się w dawnym klasztorze sióstr bernardynek. Posiada różnorodne zbiory archeologiczne, historyczne i etnograficzne.</string>
     <string name="museum_localization">ul. Narutowicza 13</string>
 
     <string name="kaliska_street">Kaliska Street</string>
-    <string name="kaliska_street_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="kaliska_street_pl">ulica Kaliska</string>
+    <string name="kaliska_street_description">Kaliska Street, once known as the shopping center of Wieluń, has been losing its importance for several years due to the construction of shopping centers in the city. However, there are still small local shops, mainly selling clothes and shoes, a restaurant and local bookshop</string>
+    <string name="kaliska_street_description_pl">Ulica Kaliska kiedyś znana jako centrum zakupowe Wielunia od kilku lat traci na znaczeniu w związku z powstawaniem w mieście centrów handlowych. Nadal jednak znajdują się tam małe lokalne sklepy głównie z odzieżą i obuwiem, księgarnia oraz restauracja. </string>
     <string name="kaliska_street_localization">ul. Kaliska</string>
 
     <string name="kaliska_gate">Kaliska Gate</string>
-    <string name="kaliska_gate_description"></string>
+    <string name="kaliska_gate_pl">Brama Kaliska</string>
+    <string name="kaliska_gate_description">The gate was built in the mid-14th century at the exit from the city towards Kalisz. During the Prussian rule (1793 - 1807) it was demolished to its foundations.</string>
+    <string name="kaliska_gate_description_pl">Brama zbudowana została w połowie XIV wieku przy wyjeździe z miasta w kierunku Kalisza.  W okresie rządów pruskich (1793 - 1807) została rozebrana do fundamentów. </string>
     <string name="kaliska_gate_localization">Nowy Rynek 6</string>
 
     <string name="library">Library</string>
-    <string name="library_description"></string>
+    <string name="library_pl">Biblioteka</string>
+    <string name="library_description">The library in Wieluń has been operating since 1945 (in its current location since 1946). In the years 2007 to 2009, the building was significantly modernized. The library offers a rich, regularly updated book collection, access to audiobooks and the Internet, and also organizes cultural and educational events.</string>
+    <string name="library_description_pl">Biblioteka w Wieluniu działa od roku 1945 (od 1946 roku w obecnym miejscu). W latach 2007 do 2009 dokonano znacznej modernizacji budynku. Biblioteka oferuje bogaty systematycznie aktualizowany księgozbiór, dostęp do audiobooków oraz internetu, organizuje także wydarzenia kulturalno-edukacyjne.</string>
     <string name="library_localization">ul. Narutowicza 4</string>
 
     <string name="cinema">Cinema/Theater Syrena</string>
+    <string name="cinema_pl">Kino/Teatr Syrena</string>
     <string name="cinema_description">The cinema was built in 1959-1962. There was a space for 578 people. In the 90’s the cinema stopped operating. A general renovation was carried out in 2010, and in October 2017, the cinema reopened.</string>
+    <string name="cinema_description_pl">Kino zostało zbudowane w latach 1959-1962. Budynek mieścił 578 widzów. W latach 90-tych kino przestało działać. W 2010 roku rozpoczęto generalny remont, a w październiku 2017 roku kino zostało ponownie otwarte.</string>
     <string name="cinema_localization">ul. Narutowicza 2</string>
 
-    <string name="park">City Park named after Mieczysław Kaluza</string>
-    <string name="park_description">The park is located on the border of the city. Within it there is a botanical garden, a city stadium, a skate park, two football fields, a playground and a restaurant.</string>
+    <string name="park">Park named after Mieczysław Kaluza</string>
+    <string name="park_pl">Park im. Mieczysław Kaluza</string>
+    <string name="park_description">The park is located on the border of the city. Within it there is a botanical garden, a city stadium, a skate park, two football fields, a playground and a restaurant. There is a bicycle route nearby, following the former railway route. A great place to spend free time outdoors with the whole family.</string>
+    <string name="park_description_pl">Park położony jest na granicy miasta. Na jego terenie znajduje się ogród botaniczny, stadion miejski, skatepark, dwa boiska do piłki nożnej, plac zabaw i restauracja. W pobliżu biegnie trasa rowerowa szlakiem dawnej kolejki. Wspaniałe miejsce do spędzenia wolnego czasu na świeżym powietrzy z całą rodziną. </string>
     <string name="park_localization">ul. Wojska Polskiego</string>
 
     <string name="jewish_cemetery">Former Jewish Cemetery</string>
+    <string name="jewish_cemetery_pl">Dawny cmentarz żydowski</string>
     <string name="jewish_cemetery_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="jewish_cemetery_description_pl">Former Jewish Cemetery</string>
     <string name="jewish_cemetery_localization">ul. Kijak</string>
 
 </resources>

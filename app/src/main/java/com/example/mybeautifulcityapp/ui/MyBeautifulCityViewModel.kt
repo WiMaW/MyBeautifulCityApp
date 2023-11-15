@@ -8,7 +8,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 
 class MyBeautifulCityViewModel : ViewModel() {
-    private val _uiState = MutableStateFlow(MyBeautifulCityUiState(
+    private val _uiState = MutableStateFlow(
+        MyBeautifulCityUiState(
         placesList = PlacesDataSource.loadPlaces(),
         currentPlace = PlacesDataSource.loadPlaces().getOrElse(0) {
             PlacesDataSource.defaultPlace
@@ -34,11 +35,24 @@ class MyBeautifulCityViewModel : ViewModel() {
             it.copy(isShowingListPage = false)
         }
     }
+
+    fun navigateToPolishVersion() {
+        _uiState.update {
+            it.copy(isShowingEnglishVersion = false)
+        }
+    }
+
+    fun navigateToEnglishVersion() {
+        _uiState.update {
+            it.copy(isShowingEnglishVersion = true)
+        }
+    }
 }
 
 data class MyBeautifulCityUiState (
     val placesList: List<Place> = emptyList(),
     val currentPlace: Place = PlacesDataSource.defaultPlace,
-    val isShowingListPage: Boolean = true
+    val isShowingListPage: Boolean = true,
+    val isShowingEnglishVersion: Boolean = true
 )
 
