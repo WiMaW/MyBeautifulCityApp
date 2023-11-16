@@ -6,12 +6,12 @@
         <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
-            <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="$USER_HOME$/.android/avd/Resizable_Device.avd" />
+            <type value="SERIAL_NUMBER" />
+            <value value="ZY22HC924P" />
           </Key>
         </deviceKey>
       </Target>
     </runningDeviceTargetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2023-11-16T09:32:16.768046Z" />
+    <timeTargetWasSelectedWithDropDown value="2023-11-16T10:15:28.950559Z" />
   </component>
 </project>
