@@ -47,9 +47,30 @@ class MyBeautifulCityViewModel : ViewModel() {
             it.copy(isShowingEnglishVersion = true)
         }
     }
+
+    fun updatePlaceListPL() {
+        _uiState.update {
+                it.copy(
+                    placesList = PlacesDataSource.loadPlacesPl(),
+                    currentPlace = PlacesDataSource.loadPlacesPl().getOrElse(0) {
+                        PlacesDataSource.defaultPlacePL
+                    }
+                )
+        }
+    }
+    fun updatePlaceListEN() {
+        _uiState.update {
+            it.copy(
+                placesList = PlacesDataSource.loadPlaces(),
+                currentPlace = PlacesDataSource.loadPlaces().getOrElse(0) {
+                    PlacesDataSource.defaultPlace
+                }
+            )
+        }
+    }
 }
 
-data class MyBeautifulCityUiState (
+data class MyBeautifulCityUiState(
     val placesList: List<Place> = emptyList(),
     val currentPlace: Place = PlacesDataSource.defaultPlace,
     val isShowingListPage: Boolean = true,

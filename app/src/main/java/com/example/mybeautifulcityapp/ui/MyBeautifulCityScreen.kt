@@ -6,17 +6,17 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -38,12 +38,8 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
@@ -57,7 +53,6 @@ import com.example.mybeautifulcityapp.R
 import com.example.mybeautifulcityapp.data.PlacesDataSource
 import com.example.mybeautifulcityapp.model.Place
 import com.example.mybeautifulcityapp.ui.theme.MyBeautifulCityAppTheme
-import com.example.mybeautifulcityapp.ui.theme.Shapes
 import com.example.mybeautifulcityapp.utilis.PlacesContentType
 
 @Composable
@@ -84,12 +79,20 @@ fun MyBeautifulCityApp(
             windowSize = windowSize,
             isShowingEnglishVersion = uiState.isShowingEnglishVersion,
             onLanguageButtonClicked = {
-                if (uiState.isShowingEnglishVersion) viewModel.navigateToPolishVersion() else viewModel.navigateToEnglishVersion()}
-            )
+                if (uiState.isShowingEnglishVersion) {
+                    viewModel.navigateToPolishVersion()
+                    viewModel.updatePlaceListPL()
+                }
+                else {
+                    viewModel.navigateToEnglishVersion()
+                    viewModel.updatePlaceListEN()
+                }
+            }
+        )
     }
     ) { innerPadding ->
 
-            if (contentType == PlacesContentType.LIST_AND_DETAIL && uiState.isShowingEnglishVersion) {
+            if (contentType == PlacesContentType.LIST_AND_DETAIL) {
                 PlaceListAndDetail(
                     places = uiState.placesList,
                     onClick = {viewModel.updateCurrentPlace(it)},
@@ -100,19 +103,18 @@ fun MyBeautifulCityApp(
                         .fillMaxWidth()
                 )
             } else {
-                if (uiState.isShowingListPage && uiState.isShowingEnglishVersion) {
-                    PlaceList(
+                if (uiState.isShowingListPage) {
+                    PlaceListLazyColumn(
                         places = uiState.placesList,
                         onClick = {
                             viewModel.updateCurrentPlace(it)
                             viewModel.navigateToDetailPage()
                         },
                         modifier = Modifier
-                            //.padding(horizontal = 6.dp)
                             .fillMaxWidth(),
                         contentPadding = innerPadding
                     )
-                } else if (uiState.isShowingEnglishVersion){
+                } else {
                     PlaceDetail(
                         selectedPlace = uiState.currentPlace,
                         onBackPressed = {viewModel.navigateToListPage()},
@@ -121,10 +123,6 @@ fun MyBeautifulCityApp(
                     )
                 }
             }
-
-
-
-
         }
     }
 
@@ -136,7 +134,7 @@ fun AppBar(
     isShowingListPage: Boolean,
     selectedPlace: Place,
     windowSize: WindowWidthSizeClass,
-    isShowingEnglishVersion: Boolean = true,
+    isShowingEnglishVersion: Boolean,
     onLanguageButtonClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -145,13 +143,17 @@ fun AppBar(
     TopAppBar(
         title = {
             Text(
-                text = if (isShowingDetailPage) {
-                    selectedPlace.placeCategory.toString()
-                    } else {stringResource(R.string.app_bar)},
+                text =
+                    if (isShowingDetailPage && isShowingEnglishVersion) {
+                        selectedPlace.placeCategory.toString()
+                    } else if (isShowingDetailPage && !isShowingEnglishVersion) {
+                        selectedPlace.placeCategoryPL.toString()
+                    } else if (isShowingEnglishVersion) {
+                        stringResource(R.string.app_bar)
+                    } else stringResource(R.string.app_bar_pl),
                 style = MaterialTheme.typography.headlineLarge,
                 color = MaterialTheme.colorScheme.primary
-                )
-                },
+                )},
         navigationIcon = if (isShowingDetailPage) {
         {
             IconButton(onClick = onBackButtonClick) {
@@ -168,8 +170,9 @@ fun AppBar(
                 languageButton(
                     onLanguageButtonClicked = onLanguageButtonClicked,
                     isShowingEnglishVersion = isShowingEnglishVersion,
-                )
-            }}},
+                )}
+            }
+                },
         modifier = modifier
     )
 }
@@ -260,7 +263,7 @@ fun PlaceImageListItem(
 }
 
 @Composable
-fun PlaceList(
+fun PlaceListLazyColumn(
     places: List<Place>,
     onClick: (Place) -> Unit,
     contentPadding: PaddingValues = PaddingValues(10.dp),
@@ -268,7 +271,8 @@ fun PlaceList(
 ) {
     LazyColumn(
         contentPadding = contentPadding,
-        modifier = modifier.padding(10.dp)
+        modifier = modifier
+            .padding(10.dp)
     ) {
         items(places, key = { place -> place.id }) { place ->
             PlaceListItem(
@@ -329,6 +333,7 @@ fun PlaceDetail(
                 Text(
                     text = "Localization: ${stringResource(selectedPlace.localizationResource)}",
                     style = MaterialTheme.typography.bodySmall,
+                    textAlign = TextAlign.Justify,
                     color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.padding(15.dp)
                 )
@@ -353,7 +358,7 @@ fun PlaceListAndDetail(
             .fillMaxWidth()
             .weight(3f)
         ){
-            PlaceList(
+            PlaceListLazyColumn(
                 places = places,
                 onClick = onClick,
                 modifier = Modifier
