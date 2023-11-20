@@ -288,7 +288,7 @@ fun PlaceDetail(
     val layoutDirection = LocalLayoutDirection.current
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .padding(top = contentPadding.calculateTopPadding())
             .verticalScroll(scrollState)
             .fillMaxWidth()
@@ -344,7 +344,7 @@ fun PlaceListAndDetail(
     Row (
         modifier = Modifier.fillMaxWidth(),
     ) {
-        Box (modifier = modifier
+        Box (modifier = Modifier
             .padding(top = 48.dp, start = 8.dp, end = 8.dp)
             .fillMaxWidth()
             .weight(3f)
