@@ -58,7 +58,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun Navigation(
     windowSize: WindowSizeClass,

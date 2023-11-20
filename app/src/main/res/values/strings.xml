@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">WielunCityApp</string>
-    <string name="city_name">WIELUŃ</string>
+    <string name="city_name" translatable="false">WIELUŃ</string>
     <string name="splash_screen_p1">the place on earth</string>
     <string name="splash_screen_p2">where World War II started</string>
 
@@ -32,14 +32,14 @@
     <string name="eternal_love_statue">Eternal Love Statue</string>
     <string name="eternal_love_statue_pl">Pomnik Wieczna Miłość</string>
     <string name="eternal_love_statue_description">The monument "Eternal Love" by Wojciech Siudmak was unveiled on the eve of the 74th anniversary of the outbreak of World War II on August 31, 2013. The work shows two faces: a woman and a man like two planets suspended in space, which connect in their orbits to form the infinity sign.</string>
-    <string name="eternal_love_statue_description_pl">Pomnik "Wiczna Miłość" autorstwa Wojciecha Siudmaka został odsłonięty w dniu 31 sierpnia 2013 roku w dzień poprzedzający 74 rocznicę wybuchu II Wojny Światowej. Praca ukazuje dwie twarze: kobietę i mężczyznę niczym dwie zawieszone w przestrzeni planety, które łączą się na swoich orbitach, tworząc znak nieskończoności. Pomnik odsłonięto w przeddzień 74. rocznicy wybuchu II wojny światowej.</string>
+    <string name="eternal_love_statue_description_pl">Pomnik "Wiczna Miłość" autorstwa Wojciecha Siudmaka został odsłonięty w dniu 31 sierpnia 2013 roku w dzień poprzedzający 74 rocznicę wybuchu II Wojny Światowej. Praca ukazuje dwie twarze: kobietę i mężczyznę niczym dwie zawieszone w przestrzeni planety, które łączą się na swoich orbitach, tworząc znak nieskończoności.</string>
     <string name="eternal_love_statue_localization">City Park "Żwirki i Wigury"</string>
     <string name="eternal_love_statue_localization_pl">Park Miejski im. Żwirki i Wigury</string>
 
     <string name="saint_michael_church">St. Michael the Archangel Church</string>
     <string name="saint_michael_church_pl">Kościół pod wezwaniem św. Michała Archanioła</string>
     <string name="saint_michael_church_description">Church dedicated to Saint Michael the Archangel. One of the first Wielun templates, build around 13-14th centuries. It was destroyed during Word War II in the spring of 1940.</string>
-    <string name="saint_michael_church_description_pl">Kościół pod wezwaniem Świętego Michała Archanioła. Jedna z pierwszych świątyń wieluńskich, zbudowana około XIII-XIV w. Została zniszczona podczas II wojny światowej wiosną 1940 roku.</string>
+    <string name="saint_michael_church_description_pl">Jedna z pierwszych świątyń wieluńskich, zbudowana około XIII-XIV w. Została zniszczona podczas II wojny światowej wiosną 1940 roku.</string>
     <string name="saint_michael_church_localization">1 Królewska Street</string>
     <string name="saint_michael_church_localization_pl">ul. Królewska 1</string>
 
@@ -66,14 +66,14 @@
 
     <string name="kaliska_street">Kaliska Street</string>
     <string name="kaliska_street_pl">ulica Kaliska</string>
-    <string name="kaliska_street_description">Kaliska Street, once known as the shopping center of Wieluń, has been losing its importance for several years due to the construction of shopping centers in the city. However, there are still small local shops, mainly selling clothes and shoes, a restaurant and local bookshop</string>
+    <string name="kaliska_street_description">Kaliska Street, once known as the shopping center of Wieluń, has been losing it\'s importance for several years due to the construction of shopping centers in the city. However, there are still small local shops, mainly selling clothes and shoes, a restaurant and local bookshop</string>
     <string name="kaliska_street_description_pl">Ulica Kaliska kiedyś znana jako centrum zakupowe Wielunia od kilku lat traci na znaczeniu w związku z powstawaniem w mieście centrów handlowych. Nadal jednak znajdują się tam małe lokalne sklepy głównie z odzieżą i obuwiem, księgarnia oraz restauracja. </string>
     <string name="kaliska_street_localization">Kaliska Street</string>
     <string name="kaliska_street_localization_pl">ul. Kaliska</string>
 
     <string name="kaliska_gate">Kaliska Gate</string>
     <string name="kaliska_gate_pl">Brama Kaliska</string>
-    <string name="kaliska_gate_description">The gate was built in the mid-14th century at the exit from the city towards Kalisz. During the Prussian rule (1793 - 1807) it was demolished to its foundations.</string>
+    <string name="kaliska_gate_description">The gate was built in the mid-14th century at the exit from the city towards Kalisz. During the Prussian rule (1793 - 1807) it was demolished to it\'s foundations.</string>
     <string name="kaliska_gate_description_pl">Brama zbudowana została w połowie XIV wieku przy wyjeździe z miasta w kierunku Kalisza.  W okresie rządów pruskich (1793 - 1807) została rozebrana do fundamentów. </string>
     <string name="kaliska_gate_localization">6 Nowy Rynek</string>
     <string name="kaliska_gate_localization_pl">Nowy Rynek 6</string>

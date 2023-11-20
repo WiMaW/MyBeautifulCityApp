@@ -14,9 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -59,7 +56,6 @@ import com.example.mybeautifulcityapp.utilis.PlacesContentType
 fun MyBeautifulCityApp(
     onBackPressed: () -> Unit,
     windowSize: WindowWidthSizeClass,
-    modifier: Modifier = Modifier
 ) {
     val viewModel: MyBeautifulCityViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsState()
@@ -68,8 +64,6 @@ fun MyBeautifulCityApp(
         WindowWidthSizeClass.Expanded -> PlacesContentType.LIST_AND_DETAIL
         else -> PlacesContentType.LIST_ONLY
     }
-
-
     Scaffold(
         topBar = {
         AppBar(
@@ -91,7 +85,6 @@ fun MyBeautifulCityApp(
         )
     }
     ) { innerPadding ->
-
             if (contentType == PlacesContentType.LIST_AND_DETAIL) {
                 PlaceListAndDetail(
                     places = uiState.placesList,
@@ -99,7 +92,7 @@ fun MyBeautifulCityApp(
                     selectedPlace = uiState.currentPlace,
                     contentPadding = innerPadding,
                     onBackPressed = onBackPressed,
-                    modifier = modifier
+                    modifier = Modifier
                         .fillMaxWidth()
                 )
             } else {
@@ -119,7 +112,7 @@ fun MyBeautifulCityApp(
                         selectedPlace = uiState.currentPlace,
                         onBackPressed = {viewModel.navigateToListPage()},
                         contentPadding = innerPadding,
-                        modifier = modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
             }
@@ -146,7 +139,7 @@ fun AppBar(
                 text =
                     if (isShowingDetailPage && isShowingEnglishVersion) {
                         selectedPlace.placeCategory.toString()
-                    } else if (isShowingDetailPage && !isShowingEnglishVersion) {
+                    } else if (isShowingDetailPage) {
                         selectedPlace.placeCategoryPL.toString()
                     } else if (isShowingEnglishVersion) {
                         stringResource(R.string.app_bar)
@@ -167,7 +160,7 @@ fun AppBar(
                 modifier = Modifier
                     .padding(start = 15.dp, end = 8.dp),
                 ) {
-                languageButton(
+                LanguageButton(
                     onLanguageButtonClicked = onLanguageButtonClicked,
                     isShowingEnglishVersion = isShowingEnglishVersion,
                 )}
@@ -178,10 +171,9 @@ fun AppBar(
 }
 
 @Composable
-fun languageButton(
+fun LanguageButton(
     isShowingEnglishVersion: Boolean,
     onLanguageButtonClicked: () -> Unit,
-
 ) {
 
     Button(
@@ -203,11 +195,11 @@ fun languageButton(
 fun PlaceListItem(
     place: Place,
     onClick: (Place) -> Unit,
-    modifier: Modifier = Modifier
+    //modifier: Modifier = Modifier
 ) {
     Card(
         elevation = CardDefaults.cardElevation(),
-        modifier = modifier
+        modifier = Modifier
             .padding(vertical = 8.dp)
             .fillMaxWidth()
             .width(400.dp)
@@ -215,11 +207,11 @@ fun PlaceListItem(
         onClick = {onClick(place)}
     ) {
         Row (
-            modifier = modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
         ) {
             Column (
                 horizontalAlignment = Alignment.Start,
-                modifier = modifier
+                modifier = Modifier
                     .weight(2f)
                     .padding(10.dp)
             ) {
@@ -239,7 +231,7 @@ fun PlaceListItem(
             PlaceImageListItem(
                 place = place,
                 contentScale = ContentScale.Crop,
-                modifier = modifier
+                modifier = Modifier
                     .weight(1f)
             )
         }
@@ -264,21 +256,20 @@ fun PlaceImageListItem(
 
 @Composable
 fun PlaceListLazyColumn(
+    modifier: Modifier = Modifier,
     places: List<Place>,
     onClick: (Place) -> Unit,
     contentPadding: PaddingValues = PaddingValues(10.dp),
-    modifier: Modifier = Modifier
 ) {
     LazyColumn(
         contentPadding = contentPadding,
-        modifier = modifier
+        modifier = Modifier
             .padding(10.dp)
     ) {
         items(places, key = { place -> place.id }) { place ->
             PlaceListItem(
                 place = place,
                 onClick = onClick,
-                modifier = modifier
             )
         }
     }
@@ -297,13 +288,13 @@ fun PlaceDetail(
     val layoutDirection = LocalLayoutDirection.current
 
     Box(
-        modifier = modifier
+        modifier = Modifier
             .padding(top = contentPadding.calculateTopPadding())
             .verticalScroll(scrollState)
             .fillMaxWidth()
     ) {
         Column(
-            modifier = modifier
+            modifier = Modifier
                 .padding(
                     bottom = contentPadding.calculateTopPadding(),
                     start = contentPadding.calculateStartPadding(layoutDirection),
@@ -343,15 +334,15 @@ fun PlaceDetail(
 
 @Composable
 fun PlaceListAndDetail(
+    modifier: Modifier = Modifier,
     places: List<Place>,
     onClick: (Place) -> Unit,
     selectedPlace: Place,
     onBackPressed: () -> Unit,
     contentPadding: PaddingValues = PaddingValues(0.dp),
-    modifier: Modifier = Modifier
 ){
     Row (
-        modifier = modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
     ) {
         Box (modifier = modifier
             .padding(top = 48.dp, start = 8.dp, end = 8.dp)
