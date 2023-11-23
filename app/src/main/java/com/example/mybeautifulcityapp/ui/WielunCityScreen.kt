@@ -2,26 +2,30 @@ package com.example.mybeautifulcityapp.ui
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -37,19 +41,20 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mybeautifulcityapp.R
-import com.example.mybeautifulcityapp.data.PlacesDataSource
 import com.example.mybeautifulcityapp.model.Place
 import com.example.mybeautifulcityapp.ui.theme.MyBeautifulCityAppTheme
+import com.example.mybeautifulcityapp.ui.theme.Shapes
 import com.example.mybeautifulcityapp.utilis.PlacesContentType
 
 @Composable
@@ -70,19 +75,7 @@ fun MyBeautifulCityApp(
             onBackButtonClick = {viewModel.navigateToListPage()},
             isShowingListPage = uiState.isShowingListPage,
             selectedPlace = uiState.currentPlace,
-            windowSize = windowSize,
-            isShowingEnglishVersion = uiState.isShowingEnglishVersion,
-            onLanguageButtonClicked = {
-                if (uiState.isShowingEnglishVersion) {
-                    viewModel.navigateToPolishVersion()
-                    viewModel.updatePlaceListPL()
-                }
-                else {
-                    viewModel.navigateToEnglishVersion()
-                    viewModel.updatePlaceListEN()
-                }
-            }
-        )
+            windowSize = windowSize)
     }
     ) { innerPadding ->
             if (contentType == PlacesContentType.LIST_AND_DETAIL) {
@@ -93,7 +86,7 @@ fun MyBeautifulCityApp(
                     contentPadding = innerPadding,
                     onBackPressed = onBackPressed,
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .fillMaxSize()
                 )
             } else {
                 if (uiState.isShowingListPage) {
@@ -104,21 +97,34 @@ fun MyBeautifulCityApp(
                             viewModel.navigateToDetailPage()
                         },
                         modifier = Modifier
-                            .fillMaxWidth(),
+                            .fillMaxWidth()
+                            ,
                         contentPadding = innerPadding
                     )
                 } else {
-                    PlaceDetail(
-                        selectedPlace = uiState.currentPlace,
-                        onBackPressed = {viewModel.navigateToListPage()},
-                        contentPadding = innerPadding,
-                        modifier = Modifier.fillMaxWidth()
-                    )
+                    Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface)) {
+                        Card(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(top = 65.dp, bottom = 15.dp, start = 10.dp, end = 10.dp),
+                            elevation = CardDefaults.cardElevation(6.dp),
+                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                            shape = Shapes.large,
+                        ) {
+                            PlaceDetail(
+                                selectedPlace = uiState.currentPlace,
+                                onBackPressed = { viewModel.navigateToListPage() },
+                                contentPadding = innerPadding,
+                                modifier = Modifier,
+                                imageHeight = 320,
+                                contentScale = ContentScale.Crop
+                            )
+                        }
+                    }
                 }
             }
         }
     }
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -127,8 +133,6 @@ fun AppBar(
     isShowingListPage: Boolean,
     selectedPlace: Place,
     windowSize: WindowWidthSizeClass,
-    isShowingEnglishVersion: Boolean,
-    onLanguageButtonClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val isShowingDetailPage = windowSize != WindowWidthSizeClass.Expanded && !isShowingListPage
@@ -137,15 +141,11 @@ fun AppBar(
         title = {
             Text(
                 text =
-                    if (isShowingDetailPage && isShowingEnglishVersion) {
+                    if (isShowingDetailPage) {
                         selectedPlace.placeCategory.toString()
-                    } else if (isShowingDetailPage) {
-                        selectedPlace.placeCategoryPL.toString()
-                    } else if (isShowingEnglishVersion) {
-                        stringResource(R.string.app_bar)
-                    } else stringResource(R.string.app_bar_pl),
+                    } else stringResource(R.string.app_bar),
                 style = MaterialTheme.typography.headlineLarge,
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.secondary
                 )},
         navigationIcon = if (isShowingDetailPage) {
         {
@@ -153,74 +153,52 @@ fun AppBar(
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
                     contentDescription = stringResource(R.string.back_button),
+                    tint = MaterialTheme.colorScheme.outline
                     )
             }
         }} else {
-            { Box (
-                modifier = Modifier
-                    .padding(start = 15.dp, end = 8.dp),
-                ) {
-                LanguageButton(
-                    onLanguageButtonClicked = onLanguageButtonClicked,
-                    isShowingEnglishVersion = isShowingEnglishVersion,
-                )}
+            { Box () {}
             }
                 },
-        modifier = modifier
+        modifier = modifier.background(MaterialTheme.colorScheme.surface)
     )
 }
-
-@Composable
-fun LanguageButton(
-    isShowingEnglishVersion: Boolean,
-    onLanguageButtonClicked: () -> Unit,
-) {
-
-    Button(
-        onClick = onLanguageButtonClicked,
-        shape = RoundedCornerShape(8.dp),
-        contentPadding = PaddingValues(2.dp) ,
-        modifier = Modifier.size(30.dp)
-    ) {
-        Text(
-            text = if(isShowingEnglishVersion) {"PL"} else {"EN"},
-            style = MaterialTheme.typography.labelSmall
-        )
-    }
-}
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PlaceListItem(
     place: Place,
     onClick: (Place) -> Unit,
-    //modifier: Modifier = Modifier
 ) {
     Card(
-        elevation = CardDefaults.cardElevation(),
+        elevation = CardDefaults.cardElevation(6.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+        shape = Shapes.large,
         modifier = Modifier
-            .padding(vertical = 8.dp)
+            .padding(10.dp)
             .fillMaxWidth()
             .width(400.dp)
-            .height(120.dp),
+            .height(120.dp)
+            .border(4.dp, color = MaterialTheme.colorScheme.primary, Shapes.large),
         onClick = {onClick(place)}
     ) {
         Row (
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(Shapes.large)
         ) {
             Column (
                 horizontalAlignment = Alignment.Start,
                 modifier = Modifier
                     .weight(2f)
-                    .padding(10.dp)
+                    .padding(18.dp)
             ) {
                 Text(
                     text = stringResource(place.nameResource),
                     style = MaterialTheme.typography.labelLarge,
                     color = MaterialTheme.colorScheme.primary,
                 )
-                Divider()
+                Divider(modifier = Modifier.height(2.dp))
                 Text(
                     text = stringResource(place.localizationResource),
                     style = MaterialTheme.typography.labelMedium,
@@ -246,9 +224,10 @@ fun PlaceImageListItem(
 ) {
     Box(modifier = modifier) {
         Image(
-            painter = painterResource(place.placeImageResource),
+            painter = painterResource(place.placeImageVintageResource),
             contentDescription = stringResource(place.nameResource),
             alignment = Alignment.Center,
+            //modifier = Modifier.clip(CircleShape),
             contentScale = contentScale
         )
     }
@@ -264,9 +243,11 @@ fun PlaceListLazyColumn(
     LazyColumn(
         contentPadding = contentPadding,
         modifier = Modifier
+            .background(MaterialTheme.colorScheme.surface)
             .padding(10.dp)
     ) {
-        items(places, key = { place -> place.id }) { place ->
+        items(places, //key = { place -> place.id }
+            ) { place ->
             PlaceListItem(
                 place = place,
                 onClick = onClick,
@@ -276,10 +257,26 @@ fun PlaceListLazyColumn(
 }
 
 @Composable
+fun PlaceDetailImage(
+    selectedPlace: Place,
+    contentScale: ContentScale,
+    modifier: Modifier
+    ) {
+    Image(
+        painter = painterResource(selectedPlace.placeImageResource),
+        contentDescription = stringResource(selectedPlace.nameResource),
+        contentScale = contentScale,
+        modifier = modifier
+    )
+}
+
+@Composable
 fun PlaceDetail(
     selectedPlace: Place,
     contentPadding: PaddingValues,
     onBackPressed: () -> Unit,
+    imageHeight: Int,
+    contentScale: ContentScale,
     modifier: Modifier = Modifier
 ) {
     BackHandler {onBackPressed()}
@@ -289,23 +286,21 @@ fun PlaceDetail(
 
     Box(
         modifier = modifier
-            .padding(top = contentPadding.calculateTopPadding())
             .verticalScroll(scrollState)
             .fillMaxWidth()
     ) {
         Column(
             modifier = Modifier
                 .padding(
-                    bottom = contentPadding.calculateTopPadding(),
+                    bottom = 10.dp,
                     start = contentPadding.calculateStartPadding(layoutDirection),
                     end = contentPadding.calculateEndPadding(layoutDirection)
                 )
         ) {
-                Image(
-                    painter = painterResource(selectedPlace.placeImageResource),
-                    contentDescription = stringResource(selectedPlace.nameResource),
-                    contentScale = ContentScale.FillWidth,
-                    modifier = Modifier.height(380.dp)
+            PlaceDetailImage(
+                selectedPlace,
+                modifier = Modifier.height(imageHeight.dp),
+                contentScale = contentScale
                 )
                 Text(
                     text = stringResource(selectedPlace.nameResource),
@@ -313,7 +308,10 @@ fun PlaceDetail(
                     color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.padding(15.dp)
                 )
-                Divider()
+                Divider(modifier = Modifier
+                    .height(3.dp)
+                    .padding(horizontal = 15.dp)
+                )
                 Text(
                     text = stringResource(selectedPlace.descriptionResource),
                     style = MaterialTheme.typography.bodySmall,
@@ -342,40 +340,55 @@ fun PlaceListAndDetail(
     contentPadding: PaddingValues = PaddingValues(0.dp),
 ){
     Row (
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.surface),
     ) {
         Box (modifier = Modifier
-            .padding(top = 48.dp, start = 8.dp, end = 8.dp)
+            .padding(top = 35.dp)
             .fillMaxWidth()
             .weight(3f)
         ){
             PlaceListLazyColumn(
                 places = places,
-                onClick = onClick,
-                modifier = Modifier
+                onClick = onClick
             )
         }
-        PlaceDetail(
-            selectedPlace = selectedPlace,
-            contentPadding = contentPadding,
-            onBackPressed = onBackPressed,
-            modifier = Modifier.weight(4f)
-        )
+        Card (modifier = Modifier
+            .weight(4f)
+            .fillMaxSize()
+            .padding(top = 65.dp, bottom = 25.dp, end = 20.dp),
+            elevation = CardDefaults.cardElevation(6.dp),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+            shape = Shapes.large,
+        ){
+            PlaceDetail(
+                selectedPlace = selectedPlace,
+                contentPadding = contentPadding,
+                onBackPressed = onBackPressed,
+                modifier = Modifier,
+                imageHeight = 215,
+                contentScale = ContentScale.Crop
+            )
+        }
     }
 }
 
-@Composable
-@Preview(showBackground = true, device = Devices.TABLET)
-fun ListAndDetailPreview() {
-    MyBeautifulCityAppTheme {
-        PlaceListAndDetail(
-            places = PlacesDataSource.loadPlaces(),
-            onClick = {},
-            selectedPlace = PlacesDataSource.defaultPlace,
-            onBackPressed = {}
-        )
-    }
-}
+//@Composable
+//@Preview(showBackground = true, device = Devices.TABLET)
+//fun ListAndDetailPreview() {
+//    MyBeautifulCityAppTheme {
+//        PlaceListAndDetail(
+//            places =
+//            CoroutineScope().launch {
+//                PlacesDataSource.loadPlaces()
+//            }
+//            onClick = {},
+//            selectedPlace = PlacesDataSource.defaultPlace,
+//            onBackPressed = {}
+//        )
+//    }
+//}
 
 @Composable
 @Preview(showBackground = true)

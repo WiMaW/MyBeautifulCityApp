@@ -7,11 +7,14 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -23,8 +26,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -44,13 +47,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyBeautifulCityAppTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    color = MaterialTheme.colorScheme.onPrimary
-                ) {
+                Surface() {
                     val windowSize = calculateWindowSizeClass(activity = this)
                     Navigation(
                         windowSize = windowSize,
-                        onBackPressed = {finish()}
+                        onBackPressed = { finish() }
                     )
                 }
             }
@@ -59,29 +60,10 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Navigation(
-    windowSize: WindowSizeClass,
-    onBackPressed: () -> Unit
+fun SplashScreen(
+    navController: NavController
 ) {
-    val navController = rememberNavController()
-    
-    NavHost(navController = navController, startDestination = "splash_screen") {
-        composable(route = "splash_screen") {
-            SplashScreen(navController = navController)
-        }
-        composable(route = "main_screen") {
-            MyBeautifulCityApp(
-                onBackPressed = onBackPressed,
-                windowSize = windowSize.widthSizeClass
-            )
-        }
-    }
-}
-
-//@Preview(showBackground = true)
-@Composable
-fun SplashScreen(navController: NavController) {
-    val scale = remember {Animatable(0f)}
+    val scale = remember { Animatable(0f) }
 
     LaunchedEffect(key1 = true) {
         scale.animateTo(
@@ -94,10 +76,11 @@ fun SplashScreen(navController: NavController) {
             )
         )
         delay(3500L)
+
         navController.navigate("main_screen")
     }
-    Column (
-        verticalArrangement = Arrangement.Center,
+    Column(
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
@@ -106,36 +89,39 @@ fun SplashScreen(navController: NavController) {
         Text(
             text = stringResource(id = R.string.city_name),
             style = MaterialTheme.typography.displayLarge,
-            color = MaterialTheme.colorScheme.primary,
+            color = MaterialTheme.colorScheme.secondary,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(
-                    horizontal = 20.dp,
-                    vertical = 8.dp
+                horizontal = 20.dp,
+                vertical = 10.dp
             )
         )
         Image(
-            painter = painterResource(R.drawable.city_hall),
+            painter = painterResource(R.drawable.city_hall_vintage),
             contentDescription = null,
             modifier = Modifier
                 .scale(scale.value)
-                .padding(bottom = 10.dp, top = 10.dp)
+                .width(300.dp)
+                .padding(bottom = 15.dp, top = 15.dp)
+                .clip(CircleShape)
+                .border(6.dp, color = MaterialTheme.colorScheme.outline, shape = CircleShape)
         )
         Text(
             text = stringResource(id = R.string.splash_screen_p1),
             style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.primary,
+            color = MaterialTheme.colorScheme.primaryContainer,
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(
-                horizontal = 20.dp,
-                vertical = 8.dp
+                    horizontal = 20.dp,
+                    vertical = 10.dp
                 )
                 .scale(scale.value)
         )
         Text(
             text = stringResource(id = R.string.splash_screen_p2),
             style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.primary,
+            color = MaterialTheme.colorScheme.primaryContainer,
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(horizontal = 20.dp)
@@ -143,5 +129,29 @@ fun SplashScreen(navController: NavController) {
         )
     }
 }
+    @Composable
+    fun Navigation(
+        windowSize: WindowSizeClass,
+        onBackPressed: () -> Unit
+    ) {
+        val navController = rememberNavController()
+
+        NavHost(navController = navController, startDestination = "splash_screen") {
+            composable(route = "splash_screen") {
+               SplashScreen(navController = navController)
+            }
+            composable(route = "main_screen") {
+                MyBeautifulCityApp(
+                    onBackPressed = onBackPressed,
+                    windowSize = windowSize.widthSizeClass
+                )
+            }
+        }
+    }
+
+
+
+
+
 
 
