@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
@@ -28,6 +27,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -84,7 +85,10 @@ fun SplashScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            .padding(10.dp)
+            .padding(
+                horizontal = dimensionResource(id = R.dimen.medium10),
+                vertical = dimensionResource(id = R.dimen.large25)
+            )
     ) {
         Text(
             text = stringResource(id = R.string.city_name),
@@ -92,19 +96,25 @@ fun SplashScreen(
             color = MaterialTheme.colorScheme.secondary,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(
-                horizontal = 20.dp,
-                vertical = 10.dp
+                horizontal = dimensionResource(id = R.dimen.large),
+                vertical = dimensionResource(id = R.dimen.medium10)
             )
         )
         Image(
             painter = painterResource(R.drawable.city_hall_vintage),
             contentDescription = null,
+            contentScale = ContentScale.FillWidth,
             modifier = Modifier
                 .scale(scale.value)
                 .width(300.dp)
-                .padding(bottom = 15.dp, top = 15.dp)
+                .padding(
+                    bottom = dimensionResource(id = R.dimen.medium),
+                    top = dimensionResource(id = R.dimen.medium))
                 .clip(CircleShape)
-                .border(6.dp, color = MaterialTheme.colorScheme.outline, shape = CircleShape)
+                .border(
+                    dimensionResource(id = R.dimen.extra_small),
+                    color = MaterialTheme.colorScheme.outline,
+                    shape = CircleShape)
         )
         Text(
             text = stringResource(id = R.string.splash_screen_p1),
@@ -113,8 +123,8 @@ fun SplashScreen(
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(
-                    horizontal = 20.dp,
-                    vertical = 10.dp
+                    horizontal = dimensionResource(id = R.dimen.large),
+                    vertical = dimensionResource(id = R.dimen.medium10)
                 )
                 .scale(scale.value)
         )
@@ -124,7 +134,7 @@ fun SplashScreen(
             color = MaterialTheme.colorScheme.primaryContainer,
             textAlign = TextAlign.Center,
             modifier = Modifier
-                .padding(horizontal = 20.dp)
+                .padding(horizontal = dimensionResource(id = R.dimen.large))
                 .scale(scale.value)
         )
     }
