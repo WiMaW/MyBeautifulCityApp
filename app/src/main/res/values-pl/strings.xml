@@ -18,24 +18,24 @@
 
     <string name="city_hall">Ratusz</string>
     <string name="city_hall_description">Brama Krakowska będąca częścią Ratusza została zbudowana w XIV wieku. W XV lub XVI wieku bramę powiększono o jedną kondygnację. W 1842 roku wybudowano połączony z bramą ratusz i od tego czasu jest on siedzibą władz miejskich.</string>
-    <string name="city_hall_localization">Plac Kazimierza Wielkiego 1</string>
+    <string name="city_hall_localization">Pl. Kazimierza Wielkiego 1</string>
 
 
     <string name="city_square">Rynek Główny</string>
     <string name="city_square_description">Centralny plac w kształcie prostokąta. Obecna jego zabudowa pochodzi z końca XIX wieku. W centralnym miejscu rynku zlokalizowana jest fontanna. Przy rynku znajdują się liczne lokalne sklepy oraz restauracja. </string>
-    <string name="city_square_localization">Plac Legionów 1</string>
+    <string name="city_square_localization">Pl. Legionów 1</string>
 
 
     <string name="former_castle">Budynek byłego zamku</string>
     <string name="former_castle_description">Drewniany zamek zlokalizowany był w tym miejscu za czasów panowania króla Kazimierza Wielkiego. Został on zniszczony podczas pożaru w roku 1791. W 1843 roku w dolnych partiach murów zamkowych wzniesiono nowy, neoklasycystyczny pałac. Dziś mieści się tu siedziba wieluńskiego Starostwa Powiatowego.</string>
-    <string name="former_castle_localization">Plac Kazimierza Wielkiego 2</string>
+    <string name="former_castle_localization">Pl. Kazimierza Wielkiego 2</string>
 
     <string name="eternal_love_statue">Pomnik Wieczna Miłość</string>
     <string name="eternal_love_statue_description">Pomnik "Wiczna Miłość" autorstwa Wojciecha Siudmaka został odsłonięty w dniu 31 sierpnia 2013 roku w dzień poprzedzający 74 rocznicę wybuchu II Wojny Światowej. Praca ukazuje dwie twarze: kobietę i mężczyznę niczym dwie zawieszone w przestrzeni planety, które łączą się na swoich orbitach, tworząc znak nieskończoności.</string>
-    <string name="eternal_love_statue_localization">Park Miejski im. Żwirki i Wigury</string>
+    <string name="eternal_love_statue_localization">Park im. Żwirki i Wigury</string>
 
 
-    <string name="saint_michael_church">Kościół pod wezwaniem św. Michała Archanioła</string>
+    <string name="saint_michael_church">Kościół św. Michała Archanioła</string>
     <string name="saint_michael_church_description">Jedna z pierwszych świątyń wieluńskich, zbudowana około XIII-XIV w. Została zniszczona podczas II wojny światowej wiosną 1940 roku.</string>
     <string name="saint_michael_church_localization">ul. Królewska 1</string>
 
@@ -46,7 +46,7 @@
 
     <string name="city_park">Park Miejski im. Żwirki i Wigury</string>
     <string name="city_park_description">Park śródmiejski, którego urządzanie zakończono w roku 1895. Obecną nazwę nadano mu dopiero w roku 1933. W latach okupacji Niemieckiej, po wybuchu drugiej wojny światowej, wstęp do niego mieli wyłącznie Niemcy. Na terenie parku rośnie wiele okazałych drzew między innymi klony, buki, dęby, kasztanowce, jesiony, lipy i brzozy.</string>
-    <string name="city_park_localization">Plac Kazimierza Wielkiego 2</string>
+    <string name="city_park_localization">Pl. Kazimierza Wielkiego 2</string>
 
 
     <string name="museum">Muzeum</string>
