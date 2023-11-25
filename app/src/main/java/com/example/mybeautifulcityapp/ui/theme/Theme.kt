@@ -15,17 +15,17 @@ import androidx.core.view.WindowCompat
 import com.example.mybeautifulcityapp.R
 
 private val lightColorsTheme = lightColorScheme(
-    primary = md_theme_light_primary, //yellow
-    secondary = md_theme_light_secondary,//violet
-    tertiary = md_theme_light_tertiary, //green
+    primary = light_primary, //yellow
+    secondary = light_secondary,//violet
+    tertiary = light_tertiary, //green
 
 
-    primaryContainer = md_theme_light_primaryContainer, //white
-    onPrimaryContainer = md_theme_light_onPrimaryContainer,
+    primaryContainer = light_primaryContainer, //white
+    onPrimaryContainer = light_onPrimaryContainer,
 
-    outline = md_theme_light_outline,
-    outlineVariant = md_theme_light_outlineVariant,
-    surface = md_theme_light_surface, //green
+    outline = light_outline,
+    outlineVariant = light_outlineVariant,
+    surface = light_surface, //green
 )
 
 
