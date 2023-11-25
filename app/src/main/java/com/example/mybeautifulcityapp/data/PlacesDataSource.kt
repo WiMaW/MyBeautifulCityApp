@@ -2,10 +2,10 @@ package com.example.mybeautifulcityapp.data
 
 import com.example.mybeautifulcityapp.R
 import com.example.mybeautifulcityapp.model.Place
-import com.example.mybeautifulcityapp.model.PlaceCategory
 
 object PlacesDataSource {
     val defaultPlace = loadPlaces()[0]
+
     fun loadPlaces(): List<Place> {
             return listOf(
                 Place(
@@ -14,7 +14,7 @@ object PlacesDataSource {
                     R.string.city_hall_localization,
                     R.drawable.city_hall,
                     R.drawable.city_hall_vintage,
-                    PlaceCategory.History,
+                    R.string.history
                 ),
                 Place(
                     R.string.city_square,
@@ -22,7 +22,7 @@ object PlacesDataSource {
                     R.string.city_square_localization,
                     R.drawable.plac_legionow,
                     R.drawable.plac_legionow_vintage,
-                    PlaceCategory.Entertainment,
+                    R.string.entertainment,
                 ),
                 Place(
                     R.string.former_castle,
@@ -30,7 +30,7 @@ object PlacesDataSource {
                     R.string.former_castle_localization,
                     R.drawable.former_castle,
                     R.drawable.former_castle_vintage,
-                    PlaceCategory.History,
+                    R.string.history,
                 ),
                 Place(
                     R.string.eternal_love_statue,
@@ -38,7 +38,7 @@ object PlacesDataSource {
                     R.string.eternal_love_statue_localization,
                     R.drawable.eternal_love_statue,
                     R.drawable.eternal_love_statue_vintage,
-                    PlaceCategory.Art,
+                    R.string.art,
                 ),
                 Place(
                     R.string.saint_michael_church,
@@ -46,7 +46,7 @@ object PlacesDataSource {
                     R.string.saint_michael_church_localization,
                     R.drawable.saint_michael_church,
                     R.drawable.saint_michael_church_vintage,
-                    PlaceCategory.History,
+                    R.string.history,
                 ),
                 Place(
                     R.string.defensive_walls,
@@ -54,7 +54,7 @@ object PlacesDataSource {
                     R.string.defensive_walls_localization,
                     R.drawable.defensive_walls,
                     R.drawable.defensive_walls_vintage,
-                    PlaceCategory.History,
+                    R.string.history,
                 ),
                 Place(
                     R.string.city_park,
@@ -62,7 +62,7 @@ object PlacesDataSource {
                     R.string.city_park_localization,
                     R.drawable.park_center,
                     R.drawable.park_center_vintage,
-                    PlaceCategory.Nature,
+                    R.string.nature,
                 ),
                 Place(
                     R.string.museum,
@@ -70,7 +70,7 @@ object PlacesDataSource {
                     R.string.museum_localization,
                     R.drawable.museum,
                     R.drawable.museum_vintage,
-                    PlaceCategory.History,
+                    R.string.history,
                 ),
                 Place(
                     R.string.kaliska_street,
@@ -78,7 +78,7 @@ object PlacesDataSource {
                     R.string.kaliska_street_localization,
                     R.drawable.kaliska_street,
                     R.drawable.kaliska_street_vintage,
-                    PlaceCategory.Shops,
+                    R.string.shops,
                 ),
                 Place(
                     R.string.kaliska_gate,
@@ -86,7 +86,7 @@ object PlacesDataSource {
                     R.string.kaliska_gate_localization,
                     R.drawable.kaliska_gate,
                     R.drawable.kaliska_gate_vintage,
-                    PlaceCategory.History,
+                    R.string.history,
                 ),
                 Place(
                     R.string.library,
@@ -94,7 +94,7 @@ object PlacesDataSource {
                     R.string.library_localization,
                     R.drawable.library,
                     R.drawable.library_vintage,
-                    PlaceCategory.Entertainment,
+                    R.string.entertainment,
                 ),
                 Place(
                     R.string.cinema,
@@ -102,7 +102,7 @@ object PlacesDataSource {
                     R.string.cinema_localization,
                     R.drawable.cinema,
                     R.drawable.cinema_vintage,
-                    PlaceCategory.Entertainment,
+                    R.string.entertainment,
                 ),
                 Place(
                     R.string.park,
@@ -110,7 +110,7 @@ object PlacesDataSource {
                     R.string.park_localization,
                     R.drawable.park,
                     R.drawable.park_vintage,
-                    PlaceCategory.Nature,
+                    R.string.nature,
                 ),
                 Place(
                     R.string.jewish_cemetery,
@@ -118,7 +118,7 @@ object PlacesDataSource {
                     R.string.jewish_cemetery_localization,
                     R.drawable.cementary,
                     R.drawable.cementary_vintage,
-                    PlaceCategory.History,
+                    R.string.history,
                 )
             )
     }

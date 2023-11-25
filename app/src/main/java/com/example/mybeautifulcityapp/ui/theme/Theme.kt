@@ -30,17 +30,17 @@ private val lightColorsTheme = lightColorScheme(
 
 
 private val darkColorsTheme = darkColorScheme(
-    primary = md_theme_dark_primary,
-    secondary = md_theme_dark_secondary,
-    tertiary = md_theme_dark_tertiary,
+    primary = dark_primary,
+    secondary = dark_secondary,
+    tertiary = dark_tertiary,
 
-    primaryContainer = md_theme_dark_primaryContainer,
-    onPrimaryContainer = md_theme_dark_onPrimaryContainer,
+    primaryContainer = dark_primaryContainer,
+    onPrimaryContainer = dark_onPrimaryContainer,
 
-    outline = md_theme_dark_outline,
-    outlineVariant = md_theme_dark_outlineVariant,
+    outline = dark_outline,
+    outlineVariant = dark_outlineVariant,
 
-    surface = md_theme_dark_surface,
+    surface = dark_surface,
 )
 
 val Calistogar = FontFamily(Font(R.font.calistogar_regular))

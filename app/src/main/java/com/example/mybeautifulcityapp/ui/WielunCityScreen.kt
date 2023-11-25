@@ -48,16 +48,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mybeautifulcityapp.R
 import com.example.mybeautifulcityapp.model.Place
-import com.example.mybeautifulcityapp.ui.theme.MyBeautifulCityAppTheme
 import com.example.mybeautifulcityapp.ui.theme.Shapes
 import com.example.mybeautifulcityapp.utilis.PlacesContentType
 
+//main function responsible for displaying main screen of the app depending of window size
 @Composable
 fun MyBeautifulCityApp(
     onBackPressed: () -> Unit,
@@ -122,6 +121,7 @@ fun MyBeautifulCityApp(
     }
 }
 
+//top app bar in placeandDetail view displaying "Places to visit", in detail view only place category and a backButton
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppBar(
@@ -137,7 +137,7 @@ fun AppBar(
         title = {
             Text(
                 text =
-                    if (isShowingDetailPage) selectedPlace.placeCategory.toString()
+                    if (isShowingDetailPage) stringResource(id = selectedPlace.placeCategory)
                     else stringResource(R.string.app_bar),
                 style = MaterialTheme.typography.headlineLarge,
                 color = MaterialTheme.colorScheme.secondary
@@ -161,13 +161,13 @@ fun AppBar(
     )
 }
 
+//UI for item in lazyColumn list with places to visit
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PlaceListItem(
     place: Place,
     onClick: (Place) -> Unit,
 ) {
-    
     Card(
         elevation = CardDefaults.cardElevation(dimensionResource(id = R.dimen.extra_small)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
@@ -226,6 +226,7 @@ fun PlaceListItem(
     }
 }
 
+//Function for blackAndWhite image in placeList lazyColumn
 @Composable
 fun PlaceImageListItem(
     place: Place,
@@ -242,6 +243,7 @@ fun PlaceImageListItem(
     }
 }
 
+//Function for loading place list in LazyColumn
 @Composable
 fun PlaceListLazyColumn(
     places: List<Place>,
@@ -264,6 +266,7 @@ fun PlaceListLazyColumn(
     }
 }
 
+//Function for displaying image in detail pages
 @Composable
 fun PlaceDetailImage(
     selectedPlace: Place,
@@ -278,6 +281,7 @@ fun PlaceDetailImage(
     )
 }
 
+//Function for displaying details about places
 @Composable
 fun PlaceDetail(
     selectedPlace: Place,
@@ -334,7 +338,7 @@ fun PlaceDetail(
                     modifier = Modifier.padding(dimensionResource(id = R.dimen.medium))
                 )
                 Text(
-                    text = "Localization: ${stringResource(selectedPlace.localizationResource)}",
+                    text = "${stringResource(id = R.string.lokalization)}: ${stringResource(selectedPlace.localizationResource)}",
                     style = MaterialTheme.typography.bodySmall,
                     textAlign = TextAlign.Justify,
                     color = MaterialTheme.colorScheme.secondary,
@@ -345,6 +349,7 @@ fun PlaceDetail(
     }
 }
 
+//Function for displaying main screen - place and detail view for larger screen sizes
 @Composable
 fun PlaceListAndDetail(
     places: List<Place>,
@@ -387,30 +392,6 @@ fun PlaceListAndDetail(
                 contentScale = ContentScale.Crop,
             )
         }
-    }
-}
-
-//@Composable
-//@Preview(showBackground = true, device = Devices.TABLET)
-//fun ListAndDetailPreview() {
-//    MyBeautifulCityAppTheme {
-//        PlaceListAndDetail(
-//            places = PlacesDataSource.loadPlaces(),
-//            onClick = {},
-//            selectedPlace = PlacesDataSource.defaultPlace,
-//            onBackPressed = {}
-//        )
-//    }
-//}
-
-@Composable
-@Preview(showBackground = true)
-fun AppPreview() {
-    MyBeautifulCityAppTheme {
-        MyBeautifulCityApp(
-            onBackPressed = {},
-            windowSize = WindowWidthSizeClass.Medium
-        )
     }
 }
 

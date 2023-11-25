@@ -8,6 +8,8 @@
     <string name="app_bar">Warto zobaczyć</string>
     <string name="back_button">Wstecz</string>
 
+    <string name="lokalization">Lokalizacja</string>
+
     <string name="history">Historia</string>
     <string name="art">Sztuka</string>
     <string name="nature">Natura</string>
@@ -22,7 +24,7 @@
 
 
     <string name="city_square">Rynek Główny</string>
-    <string name="city_square_description">Centralny plac w kształcie prostokąta. Obecna jego zabudowa pochodzi z końca XIX wieku. W centralnym miejscu rynku zlokalizowana jest fontanna. Przy rynku znajdują się liczne lokalne sklepy oraz restauracja. </string>
+    <string name="city_square_description">Centralny plac w kształcie prostokąta. Obecna jego zabudowa pochodzi z końca XIX wieku. W centralnym miejscu rynku zlokalizowana jest fontanna. Przy rynku znajdują się liczne lokalne sklepy oraz restauracja. W sezonie letnio, wiosennym na placu rozstawiany jest bar.</string>
     <string name="city_square_localization">Pl. Legionów 1</string>
 
 
@@ -36,7 +38,7 @@
 
 
     <string name="saint_michael_church">Kościół św. Michała Archanioła</string>
-    <string name="saint_michael_church_description">Jedna z pierwszych świątyń wieluńskich, zbudowana około XIII-XIV w. Została zniszczona podczas II wojny światowej wiosną 1940 roku.</string>
+    <string name="saint_michael_church_description">Jedna z pierwszych świątyń wieluńskich, zbudowana około XIII-XIV wieku. Została zniszczona podczas II wojny światowej, wiosną 1940 roku.</string>
     <string name="saint_michael_church_localization">ul. Królewska 1</string>
 
     <string name="defensive_walls">Mury obronne</string>
@@ -45,7 +47,7 @@
 
 
     <string name="city_park">Park Miejski im. Żwirki i Wigury</string>
-    <string name="city_park_description">Park śródmiejski, którego urządzanie zakończono w roku 1895. Obecną nazwę nadano mu dopiero w roku 1933. W latach okupacji Niemieckiej, po wybuchu drugiej wojny światowej, wstęp do niego mieli wyłącznie Niemcy. Na terenie parku rośnie wiele okazałych drzew między innymi klony, buki, dęby, kasztanowce, jesiony, lipy i brzozy.</string>
+    <string name="city_park_description">Park śródmiejski, którego urządzanie zakończono w roku 1895. Obecną nazwę nadano mu w roku 1933. W latach okupacji Niemieckiej, po wybuchu drugiej wojny światowej, wstęp do niego mieli wyłącznie Niemcy. Na terenie parku rośnie wiele okazałych drzew między innymi klony, buki, dęby, kasztanowce, jesiony, lipy i brzozy.</string>
     <string name="city_park_localization">Pl. Kazimierza Wielkiego 2</string>
 
 
@@ -70,7 +72,7 @@
 
 
     <string name="cinema">Kino/Teatr Syrena</string>
-    <string name="cinema_description">Kino zostało zbudowane w latach 1959–1962. Budynek mieścił 578 widzów. W latach 90-tych kino przestało działać. W 2010 roku rozpoczęto generalny remont, a w październiku 2017 roku kino zostało ponownie otwarte.</string>
+    <string name="cinema_description">Kino zostało zbudowane w latach 1959–1962. Budynek mógł pomieścić 578 widzów. W latach 90-tych kino przestało działać. W 2010 roku rozpoczęto generalny remont, a w październiku 2017 roku kino zostało ponownie otwarte.</string>
     <string name="cinema_localization">ul. Narutowicza 2</string>
 
     <string name="park">Park im. Mieczysława Kałuży</string>
