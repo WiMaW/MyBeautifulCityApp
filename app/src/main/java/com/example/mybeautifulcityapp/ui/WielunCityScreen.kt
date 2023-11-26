@@ -1,5 +1,6 @@
 package com.example.mybeautifulcityapp.ui
 
+import android.content.SharedPreferences
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -20,6 +21,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -36,8 +38,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -55,12 +59,15 @@ import com.example.mybeautifulcityapp.R
 import com.example.mybeautifulcityapp.model.Place
 import com.example.mybeautifulcityapp.ui.theme.Shapes
 import com.example.mybeautifulcityapp.utilis.PlacesContentType
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.debounce
 
 //main function responsible for displaying main screen of the app depending of window size
 @Composable
 fun MyBeautifulCityApp(
     onBackPressed: () -> Unit,
     windowSize: WindowWidthSizeClass,
+    prefs: SharedPreferences
 ) {
     val viewModel: MyBeautifulCityViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsState()
@@ -86,6 +93,7 @@ fun MyBeautifulCityApp(
                     selectedPlace = uiState.currentPlace,
                     contentPadding = innerPadding,
                     onBackPressed = onBackPressed,
+                    prefs = prefs
                 )
             } else {
                 if (uiState.isShowingListPage) {
@@ -95,7 +103,8 @@ fun MyBeautifulCityApp(
                             viewModel.updateCurrentPlace(it)
                             viewModel.navigateToDetailPage()
                         },
-                        contentPadding = innerPadding
+                        contentPadding = innerPadding,
+                        prefs = prefs
                     )
                 } else {
                     Box(modifier = Modifier
@@ -247,10 +256,26 @@ fun PlaceImageListItem(
 @Composable
 fun PlaceListLazyColumn(
     places: List<Place>,
+    prefs: SharedPreferences,
     onClick: (Place) -> Unit,
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
+    val scrollPosition = prefs.getInt("scroll_position", 0)
+    val lazyListState = rememberLazyListState(initialFirstVisibleItemIndex = scrollPosition)
+    LaunchedEffect(key1 = lazyListState) {
+        snapshotFlow {
+            lazyListState.firstVisibleItemScrollOffset
+        }
+            .debounce(500L)
+            .collectLatest { index ->
+                prefs.edit()
+                    .putInt("scroll_position", index)
+                    .apply()
+            }
+    }
+    
     LazyColumn(
+        state = lazyListState,
         contentPadding = contentPadding,
         modifier = Modifier
             .background(MaterialTheme.colorScheme.surface)
@@ -354,6 +379,7 @@ fun PlaceDetail(
 fun PlaceListAndDetail(
     places: List<Place>,
     onClick: (Place) -> Unit,
+    prefs: SharedPreferences,
     selectedPlace: Place,
     onBackPressed: () -> Unit,
     contentPadding: PaddingValues = PaddingValues(0.dp)
@@ -374,6 +400,7 @@ fun PlaceListAndDetail(
             PlaceListLazyColumn(
                 places = places,
                 onClick = onClick,
+                prefs = prefs
             )
         }
         Box(modifier = Modifier

@@ -1,5 +1,6 @@
 package com.example.mybeautifulcityapp
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.animation.OvershootInterpolator
 import androidx.activity.ComponentActivity
@@ -42,6 +43,10 @@ import com.example.mybeautifulcityapp.ui.theme.MyBeautifulCityAppTheme
 import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
+
+    private val prefs by lazy {
+        applicationContext.getSharedPreferences("prefs", MODE_PRIVATE)
+    }
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +57,8 @@ class MainActivity : ComponentActivity() {
                     val windowSize = calculateWindowSizeClass(activity = this)
                     Navigation(
                         windowSize = windowSize,
-                        onBackPressed = { finish() }
+                        onBackPressed = { finish() },
+                        prefs = prefs
                     )
                 }
             }
@@ -142,7 +148,8 @@ fun SplashScreen(
     @Composable
     fun Navigation(
         windowSize: WindowSizeClass,
-        onBackPressed: () -> Unit
+        onBackPressed: () -> Unit,
+        prefs: SharedPreferences,
     ) {
         val navController = rememberNavController()
 
@@ -153,7 +160,8 @@ fun SplashScreen(
             composable(route = "main_screen") {
                 MyBeautifulCityApp(
                     onBackPressed = onBackPressed,
-                    windowSize = windowSize.widthSizeClass
+                    windowSize = windowSize.widthSizeClass,
+                    prefs = prefs
                 )
             }
         }
