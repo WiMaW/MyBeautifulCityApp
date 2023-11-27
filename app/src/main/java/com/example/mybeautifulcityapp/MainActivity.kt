@@ -47,6 +47,7 @@ class MainActivity : ComponentActivity() {
     private val prefs by lazy {
         applicationContext.getSharedPreferences("prefs", MODE_PRIVATE)
     }
+
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,87 +65,89 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
 
-@Composable
-fun SplashScreen(
-    navController: NavController
-) {
-    val scale = remember { Animatable(0f) }
-
-    LaunchedEffect(key1 = true) {
-        scale.animateTo(
-            targetValue = 1f,
-            animationSpec = tween(
-                durationMillis = 800,
-                easing = {
-                    OvershootInterpolator(1f).getInterpolation(it)
-                }
-            )
-        )
-        delay(3500L)
-
-        navController.navigate("main_screen")
-    }
-    Column(
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(
-                horizontal = dimensionResource(id = R.dimen.medium10),
-                vertical = dimensionResource(id = R.dimen.large25)
-            )
+    @Composable
+    fun SplashScreen(
+        navController: NavController
     ) {
-        Text(
-            text = stringResource(id = R.string.city_name),
-            style = MaterialTheme.typography.displayLarge,
-            color = MaterialTheme.colorScheme.secondary,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(
-                horizontal = dimensionResource(id = R.dimen.large),
-                vertical = dimensionResource(id = R.dimen.medium10)
+        val scale = remember { Animatable(0f) }
+
+        LaunchedEffect(key1 = true) {
+            scale.animateTo(
+                targetValue = 1f,
+                animationSpec = tween(
+                    durationMillis = 800,
+                    easing = {
+                        OvershootInterpolator(1f).getInterpolation(it)
+                    }
+                )
             )
-        )
-        Image(
-            painter = painterResource(R.drawable.city_hall_vintage),
-            contentDescription = null,
-            contentScale = ContentScale.FillWidth,
+            delay(3500L)
+
+            navController.navigate("main_screen")
+        }
+        Column(
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .scale(scale.value)
-                .width(300.dp)
+                .fillMaxSize()
                 .padding(
-                    bottom = dimensionResource(id = R.dimen.medium),
-                    top = dimensionResource(id = R.dimen.medium))
-                .clip(CircleShape)
-                .border(
-                    dimensionResource(id = R.dimen.extra_small),
-                    color = MaterialTheme.colorScheme.outline,
-                    shape = CircleShape)
-        )
-        Text(
-            text = stringResource(id = R.string.splash_screen_p1),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.primaryContainer,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(
+                    horizontal = dimensionResource(id = R.dimen.medium10),
+                    vertical = dimensionResource(id = R.dimen.large25)
+                )
+        ) {
+            Text(
+                text = stringResource(id = R.string.city_name),
+                style = MaterialTheme.typography.displayLarge,
+                color = MaterialTheme.colorScheme.secondary,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(
                     horizontal = dimensionResource(id = R.dimen.large),
                     vertical = dimensionResource(id = R.dimen.medium10)
                 )
-                .scale(scale.value)
-        )
-        Text(
-            text = stringResource(id = R.string.splash_screen_p2),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.primaryContainer,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(horizontal = dimensionResource(id = R.dimen.large))
-                .scale(scale.value)
-        )
+            )
+            Image(
+                painter = painterResource(R.drawable.city_hall_vintage),
+                contentDescription = null,
+                contentScale = ContentScale.FillWidth,
+                modifier = Modifier
+                    .scale(scale.value)
+                    .width(300.dp)
+                    .padding(
+                        bottom = dimensionResource(id = R.dimen.medium),
+                        top = dimensionResource(id = R.dimen.medium)
+                    )
+                    .clip(CircleShape)
+                    .border(
+                        dimensionResource(id = R.dimen.extra_small),
+                        color = MaterialTheme.colorScheme.outline,
+                        shape = CircleShape
+                    )
+            )
+            Text(
+                text = stringResource(id = R.string.splash_screen_p1),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.primaryContainer,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .padding(
+                        horizontal = dimensionResource(id = R.dimen.large),
+                        vertical = dimensionResource(id = R.dimen.medium10)
+                    )
+                    .scale(scale.value)
+            )
+            Text(
+                text = stringResource(id = R.string.splash_screen_p2),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.primaryContainer,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .padding(horizontal = dimensionResource(id = R.dimen.large))
+                    .scale(scale.value)
+            )
+        }
     }
-}
+
     @Composable
     fun Navigation(
         windowSize: WindowSizeClass,
@@ -155,7 +158,7 @@ fun SplashScreen(
 
         NavHost(navController = navController, startDestination = "splash_screen") {
             composable(route = "splash_screen") {
-               SplashScreen(navController = navController)
+                SplashScreen(navController = navController)
             }
             composable(route = "main_screen") {
                 MyBeautifulCityApp(
@@ -166,6 +169,7 @@ fun SplashScreen(
             }
         }
     }
+}
 
 
 

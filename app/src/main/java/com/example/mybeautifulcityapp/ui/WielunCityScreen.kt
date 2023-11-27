@@ -264,9 +264,9 @@ fun PlaceListLazyColumn(
     val lazyListState = rememberLazyListState(initialFirstVisibleItemIndex = scrollPosition)
     LaunchedEffect(key1 = lazyListState) {
         snapshotFlow {
-            lazyListState.firstVisibleItemScrollOffset
+            lazyListState.firstVisibleItemIndex
         }
-            .debounce(500L)
+            .debounce(400L)
             .collectLatest { index ->
                 prefs.edit()
                     .putInt("scroll_position", index)
