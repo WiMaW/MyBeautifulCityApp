@@ -71,43 +71,45 @@ fun MyBeautifulCityApp(
 ) {
     val viewModel: MyBeautifulCityViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsState()
-    val contentType = when(windowSize) {
+    val contentType = when (windowSize) {
         WindowWidthSizeClass.Compact, WindowWidthSizeClass.Medium -> PlacesContentType.LIST_ONLY
         WindowWidthSizeClass.Expanded -> PlacesContentType.LIST_AND_DETAIL
         else -> PlacesContentType.LIST_ONLY
     }
-    
+
     Scaffold(
         topBar = {
-        AppBar(
-            onBackButtonClick = { viewModel.navigateToListPage() },
-            isShowingListPage = uiState.isShowingListPage,
-            selectedPlace = uiState.currentPlace,
-            windowSize = windowSize
-        )}
+            AppBar(
+                onBackButtonClick = { viewModel.navigateToListPage() },
+                isShowingListPage = uiState.isShowingListPage,
+                selectedPlace = uiState.currentPlace,
+                windowSize = windowSize
+            )
+        }
     ) { innerPadding ->
-            if (contentType == PlacesContentType.LIST_AND_DETAIL) {
-                PlaceListAndDetail(
+        if (contentType == PlacesContentType.LIST_AND_DETAIL) {
+            PlaceListAndDetail(
+                places = uiState.placesList,
+                onClick = { viewModel.updateCurrentPlace(it) },
+                selectedPlace = uiState.currentPlace,
+                contentPadding = innerPadding,
+                onBackPressed = onBackPressed,
+                prefs = prefs
+            )
+        } else {
+            if (uiState.isShowingListPage) {
+                PlaceListLazyColumn(
                     places = uiState.placesList,
-                    onClick = { viewModel.updateCurrentPlace(it) },
-                    selectedPlace = uiState.currentPlace,
+                    onClick = {
+                        viewModel.updateCurrentPlace(it)
+                        viewModel.navigateToDetailPage()
+                    },
                     contentPadding = innerPadding,
-                    onBackPressed = onBackPressed,
                     prefs = prefs
                 )
             } else {
-                if (uiState.isShowingListPage) {
-                    PlaceListLazyColumn(
-                        places = uiState.placesList,
-                        onClick = {
-                            viewModel.updateCurrentPlace(it)
-                            viewModel.navigateToDetailPage()
-                        },
-                        contentPadding = innerPadding,
-                        prefs = prefs
-                    )
-                } else {
-                    Box(modifier = Modifier
+                Box(
+                    modifier = Modifier
                         .background(MaterialTheme.colorScheme.surface)
                         .padding(
                             top = dimensionResource(id = R.dimen.extra_large),
@@ -115,18 +117,18 @@ fun MyBeautifulCityApp(
                             start = dimensionResource(id = R.dimen.medium),
                             end = dimensionResource(id = R.dimen.medium)
                         )
-                    ){
-                        PlaceDetail(
-                            selectedPlace = uiState.currentPlace,
-                            onBackPressed = { viewModel.navigateToListPage() },
-                            contentPadding = innerPadding,
-                            modifier = Modifier,
-                            imageHeight = dimensionResource(id = R.dimen.place_detail_image_height),
-                            contentScale = ContentScale.Crop
-                        )
-                    }
+                ) {
+                    PlaceDetail(
+                        selectedPlace = uiState.currentPlace,
+                        onBackPressed = { viewModel.navigateToListPage() },
+                        contentPadding = innerPadding,
+                        modifier = Modifier,
+                        imageHeight = dimensionResource(id = R.dimen.place_detail_image_height),
+                        contentScale = ContentScale.Crop
+                    )
                 }
             }
+        }
     }
 }
 
@@ -146,20 +148,23 @@ fun AppBar(
         title = {
             Text(
                 text =
-                    if (isShowingDetailPage) stringResource(id = selectedPlace.placeCategory)
-                    else stringResource(R.string.app_bar),
+                if (isShowingDetailPage) stringResource(id = selectedPlace.placeCategory)
+                else stringResource(R.string.app_bar),
                 style = MaterialTheme.typography.headlineLarge,
                 color = MaterialTheme.colorScheme.secondary
-                ) },
-        navigationIcon = if (isShowingDetailPage) {{
-            IconButton(onClick = onBackButtonClick) {
-                Icon(
-                    imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = stringResource(R.string.back_button),
-                    tint = MaterialTheme.colorScheme.outline
+            )
+        },
+        navigationIcon = if (isShowingDetailPage) {
+            {
+                IconButton(onClick = onBackButtonClick) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = stringResource(R.string.back_button),
+                        tint = MaterialTheme.colorScheme.outline
                     )
+                }
             }
-        }} else {
+        } else {
             {
                 Box {}
             }
@@ -193,12 +198,12 @@ fun PlaceListItem(
             ),
         onClick = { onClick(place) }
     ) {
-        Row (
+        Row(
             modifier = Modifier
                 .fillMaxSize()
                 .clip(Shapes.large)
         ) {
-            Column (
+            Column(
                 horizontalAlignment = Alignment.Start,
                 verticalArrangement = Arrangement.Center,
                 modifier = Modifier
@@ -244,7 +249,7 @@ fun PlaceImageListItem(
 ) {
     Box(modifier = modifier) {
         Image(
-            painter = painterResource(place.placeImageVintageResource),
+            painter = painterResource(place.placeImageResource),
             contentDescription = stringResource(place.nameResource),
             alignment = Alignment.Center,
             contentScale = contentScale
@@ -273,7 +278,7 @@ fun PlaceListLazyColumn(
                     .apply()
             }
     }
-    
+
     LazyColumn(
         state = lazyListState,
         contentPadding = contentPadding,
@@ -281,8 +286,9 @@ fun PlaceListLazyColumn(
             .background(MaterialTheme.colorScheme.surface)
             .padding(horizontal = dimensionResource(id = R.dimen.medium))
     ) {
-        items(places, //key = { place -> place.id }
-            ) { place ->
+        items(
+            places, //key = { place -> place.id }
+        ) { place ->
             PlaceListItem(
                 place = place,
                 onClick = onClick,
@@ -297,7 +303,7 @@ fun PlaceDetailImage(
     selectedPlace: Place,
     contentScale: ContentScale,
     modifier: Modifier
-    ) {
+) {
     Image(
         painter = painterResource(selectedPlace.placeImageResource),
         contentDescription = stringResource(selectedPlace.nameResource),
@@ -321,12 +327,12 @@ fun PlaceDetail(
     val scrollState = rememberScrollState()
     val layoutDirection = LocalLayoutDirection.current
 
-    Card (
+    Card(
         modifier = Modifier.fillMaxSize(),
         elevation = CardDefaults.cardElevation(dimensionResource(id = R.dimen.extra_small)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
         shape = Shapes.large,
-    ){
+    ) {
         Box(
             modifier = modifier
                 .verticalScroll(scrollState)
@@ -351,9 +357,10 @@ fun PlaceDetail(
                     color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.padding(dimensionResource(id = R.dimen.medium))
                 )
-                Divider(modifier = Modifier
-                    .height(dimensionResource(id = R.dimen.divider_height))
-                    .padding(horizontal = dimensionResource(id = R.dimen.medium))
+                Divider(
+                    modifier = Modifier
+                        .height(dimensionResource(id = R.dimen.divider_height))
+                        .padding(horizontal = dimensionResource(id = R.dimen.medium))
                 )
                 Text(
                     text = stringResource(selectedPlace.descriptionResource),
@@ -363,7 +370,11 @@ fun PlaceDetail(
                     modifier = Modifier.padding(dimensionResource(id = R.dimen.medium))
                 )
                 Text(
-                    text = "${stringResource(id = R.string.lokalization)}: ${stringResource(selectedPlace.localizationResource)}",
+                    text = "${stringResource(id = R.string.lokalization)}: ${
+                        stringResource(
+                            selectedPlace.localizationResource
+                        )
+                    }",
                     style = MaterialTheme.typography.bodySmall,
                     textAlign = TextAlign.Justify,
                     color = MaterialTheme.colorScheme.secondary,
@@ -383,33 +394,35 @@ fun PlaceListAndDetail(
     selectedPlace: Place,
     onBackPressed: () -> Unit,
     contentPadding: PaddingValues = PaddingValues(0.dp)
-){
-    Row (
+) {
+    Row(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.surface)
     ) {
-        Box (modifier = Modifier
-            .padding(
-                top = dimensionResource(id = R.dimen.extra_large),
-                start = dimensionResource(id = R.dimen.border_width),
-                end = dimensionResource(id = R.dimen.border_width)
-            )
-            .weight(3f)
-        ){
+        Box(
+            modifier = Modifier
+                .padding(
+                    top = dimensionResource(id = R.dimen.extra_large),
+                    start = dimensionResource(id = R.dimen.border_width),
+                    end = dimensionResource(id = R.dimen.border_width)
+                )
+                .weight(3f)
+        ) {
             PlaceListLazyColumn(
                 places = places,
                 onClick = onClick,
                 prefs = prefs
             )
         }
-        Box(modifier = Modifier
-            .weight(4f)
-            .padding(
-                top = dimensionResource(id = R.dimen.extra_large),
-                bottom = dimensionResource(id = R.dimen.large),
-                end = dimensionResource(id = R.dimen.medium)
-            )
+        Box(
+            modifier = Modifier
+                .weight(4f)
+                .padding(
+                    top = dimensionResource(id = R.dimen.extra_large),
+                    bottom = dimensionResource(id = R.dimen.large),
+                    end = dimensionResource(id = R.dimen.medium)
+                )
         ) {
             PlaceDetail(
                 selectedPlace = selectedPlace,

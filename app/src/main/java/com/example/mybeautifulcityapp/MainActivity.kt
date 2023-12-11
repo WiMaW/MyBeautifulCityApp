@@ -1,7 +1,11 @@
 package com.example.mybeautifulcityapp
 
+import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.util.Log
 import android.view.animation.OvershootInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -29,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -53,7 +58,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyBeautifulCityAppTheme {
-                // A surface container using the 'background' color from the theme
                 Surface() {
                     val windowSize = calculateWindowSizeClass(activity = this)
                     Navigation(
@@ -83,7 +87,6 @@ class MainActivity : ComponentActivity() {
                 )
             )
             delay(3500L)
-
             navController.navigate("main_screen")
         }
         Column(

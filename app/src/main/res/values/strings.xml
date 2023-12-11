@@ -22,7 +22,7 @@
 
 
     <string name="city_square">City Square</string>
-    <string name="city_square_description">There are numerous local shops and a restaurant at the market square, and during the spring end summer months a bar works here. It\'s current buildings are dated back to the end of the 19th century. In the central place of the square the fountain is placed. </string>
+    <string name="city_square_description">There are numerous local shops and a restaurant at the market square. During the spring and summer months a bar works here. It\'s current buildings are dated back to the end of the 19th century. In the central place of the square the fountain is placed. </string>
     <string name="city_square_localization">1 Legionów Square</string>
 
 
@@ -72,7 +72,7 @@
 
 
     <string name="cinema">Cinema/Theater Syrena</string>
-    <string name="cinema_description">The cinema was built in 1959–1962. There was a space for 578 people. In the 90’s the cinema stopped operating. A general renovation was carried out in 2010, and in October 2017, the cinema reopened.</string>
+    <string name="cinema_description">The cinema was built in 1959–1962. There was a space for 578 people. In the 90’s the cinema stopped operating. A general renovation was carried out in 2010, and in October 2017, the cinema reopened.There are two cinema halls in the building - a large one and a chamber room (equipped with comfortable sofas). Film screenings, concerts and theater plays take place here.</string>
     <string name="cinema_localization">2 Narutowicz Street</string>
 
     <string name="park">City Park \'Mieczysław Kaluza\'</string>

@@ -19,12 +19,12 @@
 
 
     <string name="city_hall">Ratusz</string>
-    <string name="city_hall_description">Brama Krakowska będąca częścią Ratusza została zbudowana w XIV wieku. W XV lub XVI wieku bramę powiększono o jedną kondygnację. W 1842 roku wybudowano połączony z bramą ratusz i od tego czasu jest on siedzibą władz miejskich.</string>
+    <string name="city_hall_description">W miejscu tym juz w XIV wieku wzniesiono Bramę Krakowską, która w późniejszym okresie stanowiła podwaliny pod budynek ratusza. W XV lub XVI wieku bramę powiększono o jedną kondygnację. Sam ratusz połączony z bramą wybudowano w 1842 roku i od tego czasu jest on siedzibą władz miejskich.</string>
     <string name="city_hall_localization">Pl. Kazimierza Wielkiego 1</string>
 
 
     <string name="city_square">Rynek Główny</string>
-    <string name="city_square_description">Centralny plac w kształcie prostokąta. Obecna jego zabudowa pochodzi z końca XIX wieku. W centralnym miejscu rynku zlokalizowana jest fontanna. Przy rynku znajdują się liczne lokalne sklepy oraz restauracja. W sezonie letnio, wiosennym na placu rozstawiany jest bar.</string>
+    <string name="city_square_description">Centralny plac w kształcie prostokąta. Obecna jego zabudowa pochodzi z końca XIX wieku. W centralnym miejscu rynku zlokalizowana jest fontanna. Przy rynku znajdują się liczne lokalne sklepy oraz restauracja. W okresie letnio-wiosennym na placu rozstawiany jest bar.</string>
     <string name="city_square_localization">Pl. Legionów 1</string>
 
 
@@ -33,7 +33,7 @@
     <string name="former_castle_localization">Pl. Kazimierza Wielkiego 2</string>
 
     <string name="eternal_love_statue">Pomnik Wieczna Miłość</string>
-    <string name="eternal_love_statue_description">Pomnik "Wiczna Miłość" autorstwa Wojciecha Siudmaka został odsłonięty w dniu 31 sierpnia 2013 roku w dzień poprzedzający 74 rocznicę wybuchu II Wojny Światowej. Praca ukazuje dwie twarze: kobietę i mężczyznę niczym dwie zawieszone w przestrzeni planety, które łączą się na swoich orbitach, tworząc znak nieskończoności.</string>
+    <string name="eternal_love_statue_description">Pomnik "Wiczna Miłość" autorstwa wieluńskiego artysty Wojciecha Siudmaka został odsłonięty w dniu 31 sierpnia 2013 roku - w dzień poprzedzający 74 rocznicę wybuchu II Wojny Światowej. Praca ukazuje dwie twarze: kobietę i mężczyznę jako dwie zawieszone w przestrzeni planety, które łączą się na swoich orbitach, tworząc znak nieskończoności.</string>
     <string name="eternal_love_statue_localization">Park im. Żwirki i Wigury</string>
 
 
@@ -72,11 +72,11 @@
 
 
     <string name="cinema">Kino/Teatr Syrena</string>
-    <string name="cinema_description">Kino zostało zbudowane w latach 1959–1962. Budynek mógł pomieścić 578 widzów. W latach 90-tych kino przestało działać. W 2010 roku rozpoczęto generalny remont, a w październiku 2017 roku kino zostało ponownie otwarte.</string>
+    <string name="cinema_description">Kino zostało zbudowane w latach 1959–1962. Budynek mógł pomieścić 578 widzów. W latach 90-tych kino przestało działać. W 2010 roku rozpoczęto generalny remont, a w październiku 2017 roku kino zostało ponownie otwarte. W kinie działają dwie sale - duża oraz kamerlana (wyposażona w wygodne kanapy). Odbywają się tu seanse filmowe, koncerty, wystawiane są sztuki teatralne.</string>
     <string name="cinema_localization">ul. Narutowicza 2</string>
 
     <string name="park">Park im. Mieczysława Kałuży</string>
-    <string name="park_description">Park położony jest na granicy miasta. Na jego terenie znajduje się ogród botaniczny, stadion miejski, skatepark, dwa boiska do piłki nożnej, plac zabaw i restauracja. W pobliżu biegnie trasa rowerowa szlakiem dawnej kolejki. Wspaniałe miejsce do spędzenia wolnego czasu na świeżym powietrzy z całą rodziną. </string>
+    <string name="park_description">Park położony jest przy granicy miasta. Na jego terenie znajduje się ogród botaniczny, stadion miejski, skatepark, dwa boiska do piłki nożnej, plac zabaw i restauracja. W pobliżu biegnie trasa rowerowa szlakiem dawnej kolejki. Wspaniałe miejsce do spędzenia wolnego czasu na świeżym powietrzy z całą rodziną. </string>
     <string name="park_localization">ul. Wojska Polskiego</string>
 
 
