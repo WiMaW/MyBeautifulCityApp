@@ -2,7 +2,6 @@ package com.example.mybeautifulcityapp.data
 
 import com.example.mybeautifulcityapp.R
 import com.example.mybeautifulcityapp.model.Place
-import kotlinx.coroutines.runBlocking
 
 object PlacesDataSource {
 
@@ -12,7 +11,8 @@ object PlacesDataSource {
             R.string.city_hall_description,
             R.string.city_hall_localization,
             R.drawable.city_hall,
-            R.string.history
+            R.string.history,
+            "geo: 51.220479, 18.572694"
         ),
         Place(
             R.string.city_square,
@@ -20,6 +20,7 @@ object PlacesDataSource {
             R.string.city_square_localization,
             R.drawable.plac_legionow,
             R.string.entertainment,
+            "geo: 51.220557, 18.570109"
         ),
         Place(
             R.string.former_castle,
@@ -27,6 +28,7 @@ object PlacesDataSource {
             R.string.former_castle_localization,
             R.drawable.former_castle,
             R.string.history,
+            "geo: 51.219580, 18.572042"
         ),
         Place(
             R.string.eternal_love_statue,
@@ -34,6 +36,7 @@ object PlacesDataSource {
             R.string.eternal_love_statue_localization,
             R.drawable.eternal_love_statue,
             R.string.art,
+            "geo: 51.220142, 18.572191"
         ),
         Place(
             R.string.saint_michael_church,
@@ -41,6 +44,7 @@ object PlacesDataSource {
             R.string.saint_michael_church_localization,
             R.drawable.saint_michael_church,
             R.string.history,
+            "geo: 51.220004, 18.570964"
         ),
         Place(
             R.string.defensive_walls,
@@ -48,6 +52,7 @@ object PlacesDataSource {
             R.string.defensive_walls_localization,
             R.drawable.defensive_walls,
             R.string.history,
+            "geo: 51.221088, 18.573351"
         ),
         Place(
             R.string.city_park,
@@ -55,6 +60,7 @@ object PlacesDataSource {
             R.string.city_park_localization,
             R.drawable.park_center,
             R.string.nature,
+            "geo: 51.218106, 18.573711"
         ),
         Place(
             R.string.museum,
@@ -62,6 +68,7 @@ object PlacesDataSource {
             R.string.museum_localization,
             R.drawable.museum,
             R.string.history,
+            "geo: 51.220327, 18.567308"
         ),
         Place(
             R.string.kaliska_street,
@@ -69,6 +76,7 @@ object PlacesDataSource {
             R.string.kaliska_street_localization,
             R.drawable.kaliska_street,
             R.string.shops,
+            "geo: 51.221257, 18.564623"
         ),
         Place(
             R.string.kaliska_gate,
@@ -76,6 +84,7 @@ object PlacesDataSource {
             R.string.kaliska_gate_localization,
             R.drawable.kaliska_gate,
             R.string.history,
+            "geo: 51.220935, 18.566833"
         ),
         Place(
             R.string.library,
@@ -83,6 +92,7 @@ object PlacesDataSource {
             R.string.library_localization,
             R.drawable.library,
             R.string.entertainment,
+            "geo: 51.220797, 18.567925"
         ),
         Place(
             R.string.cinema,
@@ -90,6 +100,7 @@ object PlacesDataSource {
             R.string.cinema_localization,
             R.drawable.cinema,
             R.string.entertainment,
+            "geo: 51.220595, 18.568488"
         ),
         Place(
             R.string.park,
@@ -97,6 +108,7 @@ object PlacesDataSource {
             R.string.park_localization,
             R.drawable.park,
             R.string.nature,
+            "geo: 51.221523, 18.554638"
         ),
         Place(
             R.string.jewish_cemetery,
@@ -104,6 +116,7 @@ object PlacesDataSource {
             R.string.jewish_cemetery_localization,
             R.drawable.cementary,
             R.string.history,
+            "geo: 51.213356, 18.553898"
         )
     )
 

@@ -60,10 +60,12 @@ class MainActivity : ComponentActivity() {
             MyBeautifulCityAppTheme {
                 Surface() {
                     val windowSize = calculateWindowSizeClass(activity = this)
+                    val context = LocalContext.current
                     Navigation(
                         windowSize = windowSize,
                         onBackPressed = { finish() },
-                        prefs = prefs
+                        prefs = prefs,
+                        context = context
                     )
                 }
             }
@@ -156,6 +158,7 @@ class MainActivity : ComponentActivity() {
         windowSize: WindowSizeClass,
         onBackPressed: () -> Unit,
         prefs: SharedPreferences,
+        context: Context
     ) {
         val navController = rememberNavController()
 
@@ -167,7 +170,8 @@ class MainActivity : ComponentActivity() {
                 MyBeautifulCityApp(
                     onBackPressed = onBackPressed,
                     windowSize = windowSize.widthSizeClass,
-                    prefs = prefs
+                    prefs = prefs,
+                    context = context
                 )
             }
         }

@@ -1,10 +1,14 @@
 package com.example.mybeautifulcityapp.ui
 
+import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -54,6 +58,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mybeautifulcityapp.R
 import com.example.mybeautifulcityapp.model.Place
@@ -67,6 +72,7 @@ import kotlinx.coroutines.flow.debounce
 fun MyBeautifulCityApp(
     onBackPressed: () -> Unit,
     windowSize: WindowWidthSizeClass,
+    context: Context,
     prefs: SharedPreferences
 ) {
     val viewModel: MyBeautifulCityViewModel = viewModel()
@@ -94,7 +100,8 @@ fun MyBeautifulCityApp(
                 selectedPlace = uiState.currentPlace,
                 contentPadding = innerPadding,
                 onBackPressed = onBackPressed,
-                prefs = prefs
+                prefs = prefs,
+                context = context
             )
         } else {
             if (uiState.isShowingListPage) {
@@ -124,7 +131,8 @@ fun MyBeautifulCityApp(
                         contentPadding = innerPadding,
                         modifier = Modifier,
                         imageHeight = dimensionResource(id = R.dimen.place_detail_image_height),
-                        contentScale = ContentScale.Crop
+                        contentScale = ContentScale.Crop,
+                        context = context
                     )
                 }
             }
@@ -320,12 +328,14 @@ fun PlaceDetail(
     onBackPressed: () -> Unit,
     imageHeight: Dp,
     contentScale: ContentScale,
+    context: Context,
     modifier: Modifier = Modifier
 ) {
     BackHandler { onBackPressed() }
 
     val scrollState = rememberScrollState()
     val layoutDirection = LocalLayoutDirection.current
+    val intent = Intent(Intent.ACTION_VIEW)
 
     Card(
         modifier = Modifier.fillMaxSize(),
@@ -378,7 +388,14 @@ fun PlaceDetail(
                     style = MaterialTheme.typography.bodySmall,
                     textAlign = TextAlign.Justify,
                     color = MaterialTheme.colorScheme.secondary,
-                    modifier = Modifier.padding(dimensionResource(id = R.dimen.medium))
+                    modifier = Modifier
+                        .padding(dimensionResource(id = R.dimen.medium))
+                        .clickable {
+                            intent.apply {
+                                data = Uri.parse(selectedPlace.geolocation)
+                                startActivity(context, intent, null)
+                            }
+                        }
                 )
             }
         }
@@ -393,6 +410,7 @@ fun PlaceListAndDetail(
     prefs: SharedPreferences,
     selectedPlace: Place,
     onBackPressed: () -> Unit,
+    context: Context,
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
     Row(
@@ -430,6 +448,7 @@ fun PlaceListAndDetail(
                 onBackPressed = onBackPressed,
                 imageHeight = dimensionResource(id = R.dimen.place_and_detail_image_height),
                 contentScale = ContentScale.Crop,
+                context = context
             )
         }
     }
