@@ -30,6 +30,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -64,6 +65,7 @@ import com.example.mybeautifulcityapp.R
 import com.example.mybeautifulcityapp.model.Place
 import com.example.mybeautifulcityapp.ui.theme.Shapes
 import com.example.mybeautifulcityapp.utilis.PlacesContentType
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
 
@@ -257,7 +259,7 @@ fun PlaceImageListItem(
 ) {
     Box(modifier = modifier) {
         Image(
-            painter = painterResource(place.placeImageResource),
+            painter = painterResource(place.placeImageResourceSmall),
             contentDescription = stringResource(place.nameResource),
             alignment = Alignment.Center,
             contentScale = contentScale
@@ -266,6 +268,7 @@ fun PlaceImageListItem(
 }
 
 //Function for loading place list in LazyColumn
+@OptIn(FlowPreview::class)
 @Composable
 fun PlaceListLazyColumn(
     places: List<Place>,
@@ -379,24 +382,36 @@ fun PlaceDetail(
                     color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.padding(dimensionResource(id = R.dimen.medium))
                 )
-                Text(
-                    text = "${stringResource(id = R.string.lokalization)}: ${
-                        stringResource(
-                            selectedPlace.localizationResource
-                        )
-                    }",
-                    style = MaterialTheme.typography.bodySmall,
-                    textAlign = TextAlign.Justify,
-                    color = MaterialTheme.colorScheme.secondary,
-                    modifier = Modifier
-                        .padding(dimensionResource(id = R.dimen.medium))
-                        .clickable {
-                            intent.apply {
-                                data = Uri.parse(selectedPlace.geolocation)
-                                startActivity(context, intent, null)
+                Row (
+                    modifier = Modifier.padding(bottom = 15.dp)
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ){
+                    Icon(
+                        imageVector = Icons.Filled.LocationOn,
+                        contentDescription = "",
+                        modifier = Modifier.padding(start = 4.dp)
+                    )
+                    Text(
+                        text = "${stringResource(id = R.string.lokalization)}: ${
+                            stringResource(
+                                selectedPlace.localizationResource
+                            )
+                        }",
+                        style = MaterialTheme.typography.labelMedium,
+                        textAlign = TextAlign.Justify,
+                        color = MaterialTheme.colorScheme.secondary,
+                        modifier = Modifier
+                            .padding(dimensionResource(id = R.dimen.medium))
+                            .clickable {
+                                intent.apply {
+                                    data = Uri.parse(selectedPlace.geolocation)
+                                    startActivity(context, intent, null)
+                                }
                             }
-                        }
-                )
+                    )
+                }
             }
         }
     }

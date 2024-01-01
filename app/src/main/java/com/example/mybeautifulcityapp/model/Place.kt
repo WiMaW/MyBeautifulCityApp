@@ -9,6 +9,7 @@ data class Place(
     @StringRes val descriptionResource: Int,
     @StringRes val localizationResource: Int,
     @DrawableRes val placeImageResource: Int,
+    @DrawableRes val placeImageResourceSmall: Int,
     @StringRes val placeCategory: Int,
     val geolocation: String
 )

@@ -1,11 +1,8 @@
 package com.example.mybeautifulcityapp
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
 import android.view.animation.OvershootInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -58,7 +55,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyBeautifulCityAppTheme {
-                Surface() {
+                Surface {
                     val windowSize = calculateWindowSizeClass(activity = this)
                     val context = LocalContext.current
                     Navigation(

@@ -32,7 +32,7 @@ val Typography = Typography(
     ),
     labelMedium = TextStyle(
         fontFamily = SenRegular,
-        fontSize = 14.sp
+        fontSize = 15.sp
     ),
     labelSmall = TextStyle(
         fontFamily = SenRegular,
